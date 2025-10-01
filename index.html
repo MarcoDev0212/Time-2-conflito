@@ -1514,7 +1514,7 @@
     <footer class="footer">
         <div class="footer-content">
             <p>&copy; 2025 Elite FC - Pro Clubs. Todos os direitos reservados.</p>
-            <p>Desenvolvido com <span class="footer-heart">♥</span> para a comunidade.</p>
+            <p>Desenvolvido <b>dev.barbosa02@gmail.com</b></p>
         </div>
     </footer>
 
@@ -1532,7 +1532,7 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="id_jogo">ID/Nick no Jogo (EA FC/FIFA)</label>
+                    <label for="id_jogo">ID/Nick no Jogo</label>
                     <input type="text" id="id_jogo" name="id_jogo" placeholder="Ex: Player_Elite_77" required>
                 </div>
 
@@ -1560,15 +1560,13 @@
                     <label for="posicao">Posição Preferida</label>
                     <select id="posicao" name="posicao" required>
                         <option value="">Selecione a Posição</option>
-                        <option value="Goleiro (GOL)">Goleiro (GOL)</option>
-                        <option value="Zagueiro (ZAG/CB)">Zagueiro (ZAG/CB)</option>
-                        <option value="Lateral (LD/LE/RB/LB)">Lateral (LD/LE/RB/LB)</option>
-                        <option value="Volante (VOL/CDM)">Volante (VOL/CDM)</option>
-                        <option value="Meio-Campo (ME/MC/CM)">Meio-Campo (ME/MC/CM)</option>
-                        <option value="Meia-Atacante (CAM)">Meia-Atacante (CAM)</option>
-                        <option value="Ponta (PE/PD/RW/LW)">Ponta (PE/PD/RW/LW)</option>
-                        <option value="Atacante (ATA/ST)">Atacante (ATA/ST)</option>
-                        <option value="Todas">Todas</option>
+                        <option value="Goleiro">Goleiro</option>
+                        <option value="Zagueiro">Zagueiro</option>
+                        <option value="Lateral">Lateral</option>
+                        <option value="Volante">Volante</option>
+                        <option value="Meio-Campo">Meio-Campo</option>
+                        <option value="Ponta">Ponta</option>
+                        <option value="Atacante">Atacante</option>
                     </select>
                 </div>
                 
@@ -1576,8 +1574,10 @@
                     <label for="dias">Dias Disponíveis</label>
                     <select id="dias" name="dias" required>
                         <option value="">Selecione o dia</option>
-                        <option value="Segunda a Quinta">Segunda a Quinta</option>
-                        <option value="Terça">Finais de Semana (Opcional)</option>
+                        <option value="Segunda">Segunda-Feira</option>
+                        <option value="Terça">Terça-Feira</option>
+                        <option value="Quarta">Quarta-Feira</option>
+                        <option value="Quinta">Quinta-Feira</option>
                     </select>
                 </div>
 
@@ -1627,7 +1627,7 @@
         // Inicializar Typed.js (efeito de digitação no título)
         function initTyped() {
             new Typed('#typed-text', {
-                strings: ["CONFLITO FC", "O CLUBE DA ELITE", "PRO CLUBS"],
+                strings: ["CONFLITO FC", "PRO CLUBS"],
                 typeSpeed: 70,
                 backSpeed: 50,
                 loop: true,
