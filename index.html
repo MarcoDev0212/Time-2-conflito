@@ -1230,6 +1230,69 @@
             transform: translate(-50%, -50%); /* Adicionado para centralizar */
             opacity: 0.8;
         }
+        /* ==================================== */
+        /* NOVO CSS PARA LINKS SOCIAIS DO JOGADOR */
+        /* ==================================== */
+        
+        /* Torna o player-card um contexto de posicionamento */
+        .player-card {
+            /* Já deve ter position: relative; mas garantindo */
+            position: relative; 
+        }
+
+        .social-link {
+            position: absolute;
+            top: 15px; /* Ajuste a distância do topo */
+            right: 15px; /* Ajuste a distância da direita */
+            font-size: 1.5rem; /* Tamanho do ícone */
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+            z-index: 10; /* Garante que o ícone fique sobre outros elementos */
+        }
+        
+        .instagram-link {
+            /* Cor de fundo padrão, sutil */
+            background: var(--neutral-100); 
+            /* Cor do ícone */
+            color: var(--neutral-700); 
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Efeito de hover no link do Instagram (usando o gradiente da marca) */
+        .instagram-link:hover {
+            /* Gradiente de cores do Instagram */
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: var(--white); /* Texto branco no hover */
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Outros links sociais (exemplo, se você adicionar) */
+        .social-link.twitter-link {
+            /* Exemplo para Twitter */
+            background: #1da1f2;
+            color: var(--white);
+            right: 60px; /* Ajuste se houver mais de um ícone */
+        }
+
+        .social-link.twitter-link:hover {
+            transform: scale(1.1);
+        }
+
+        /* Se você quiser o link dentro do info */
+        .player-info .social-link {
+            position: static;
+            /* Se quiser que fique centralizado e abaixo da posição */
+            display: block; 
+            margin: 1rem auto 0.5rem;
+        }
+
+        /* FIM NOVO CSS PARA LINKS SOCIAIS DO JOGADOR */
     </style>
 </head>
 <body>
@@ -1248,7 +1311,6 @@
                     <li><a href="#hero" class="nav-link active"><i class="fas fa-home"></i> Início</a></li>
                     <li><a href="#clube" class="nav-link"><i class="fas fa-users"></i> Clube</a></li>
                     <li><a href="#elenco" class="nav-link"><i class="fas fa-shirt"></i> Elenco</a></li>
-                    <li><a href="#escalacoes" class="nav-link"><i class="fas fa-diagram-next"></i> Táticas</a></li>
                     <li><a href="#redes" class="nav-link"><i class="fas fa-share-alt"></i> Redes</a></li>
                     <li><a href="#recrutar-modal" id="open-recrutar-modal" class="btn btn-primary" onclick="openModal('recrutar-modal')"><i class="fas fa-user-plus"></i> Recrutar</a></li>
                 </ul>
@@ -1344,10 +1406,11 @@
                         </div>
                         <div class="player-info">
                             <h4 class="player-name">Markito10_</h4>
-                            <p class="player-position">Meia Armador (MEI)</p>
-                            <p class="player-description">Nosso maestro, líder em campo e principal motor ofensivo da equipe.</p>
-                            <p>Instagram:<a href="https://www.instagram.com/markinhos02?utm_source=qr&igsh=c2Iwamx4dGZjZjNz" target="_blank">@markinhos02</a></p>
-                            <div class="player-stats">
+                            <p class="player-position">Posição (MEI)</p>
+                            <a href="URL_DO_INSTAGRAM_DO_JOGADOR" target="_blank" class="social-link instagram-link">
+                            <i class="fa-brands fa-instagram"></i></a>
+                            <p class="player-description">Uma breve descrição sobre o jogador.</p>
+                        <div class="player-stats">
                                 <div class="player-stat"><div class="player-stat-value">9.5</div><div class="player-stat-label">Média</div></div>
                                 <div class="player-stat"><div class="player-stat-value">55</div><div class="player-stat-label">Gols</div></div>
                                 <div class="player-stat"><div class="player-stat-value">40</div><div class="player-stat-label">Assistências</div></div>
@@ -1362,13 +1425,14 @@
                             </div>
                         </div>
                         <div class="player-info">
-                            <h4 class="player-name">VelocidadeX</h4>
-                            <p class="player-position">Atacante (ST)</p>
-                            <p class="player-description">A flecha do time. Rápido, letal e a referência no ataque. Seu faro de gol é implacável.</p>
-                            <div class="player-stats">
-                                <div class="player-stat"><div class="player-stat-value">9.0</div><div class="player-stat-label">Média</div></div>
-                                <div class="player-stat"><div class="player-stat-value">80</div><div class="player-stat-label">Gols</div></div>
-                                <div class="player-stat"><div class="player-stat-value">15</div><div class="player-stat-label">Assistências</div></div>
+                            <h4 class="player-name">Braga</h4>
+                            <p class="player-position">Posição (ATA)</p>
+                            <a href="URL_DO_INSTAGRAM_DO_JOGADOR" target="_blank" class="social-link instagram-link">
+                            <i class="fa-brands fa-instagram"></i></a>
+                        <div class="player-stats">
+                                
+                                <div class="player-stat"><div class="player-stat-value"></div><div class="player-stat-label"></div></div>
+                                <div class="player-stat"><div class="player-stat-value">09</div><div class="player-stat-label">Camisa</div></div>
                             </div>
                         </div>
                     </div>
@@ -1438,7 +1502,7 @@
                     
                     <div class="social-card instagram">
                         <i class="fab fa-instagram social-icon" style="color: #e4405f;"></i>
-                        <h4 class="social-title">Elite no Instagram</h4>
+                        <h4 class="social-title">Conflito no Instagram</h4>
                         <p class="social-description">Fique por dentro dos melhores momentos, fotos dos jogadores e anúncios especiais do clube.</p>
                         <a href="**[LINK DO SEU INSTAGRAM AQUI]**" class="btn btn-outline" style="color: #e4405f; border-color: #e4405f;" target="_blank">Seguir</a>
                     </div>
@@ -1563,7 +1627,7 @@
         // Inicializar Typed.js (efeito de digitação no título)
         function initTyped() {
             new Typed('#typed-text', {
-                strings: ["ELITE FC", "O CLUBE DA ELITE", "PRO CLUBS"],
+                strings: ["CONFLITO FC", "O CLUBE DA ELITE", "PRO CLUBS"],
                 typeSpeed: 70,
                 backSpeed: 50,
                 loop: true,
@@ -1665,7 +1729,7 @@
 
 *Informações Pessoais:*
 Nome: ${nome}
-ID no Jogo: ${id_jogo}
+ID: ${id_jogo}
 Idade: ${idade}
 Discord: ${discord}
 
