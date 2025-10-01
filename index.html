@@ -1555,6 +1555,16 @@
                         <option value="Nao">Não</option>
                     </select>
                 </div>
+
+                <div class="form-group">
+                    <label for="plataforma">Plataforma</label>
+                    <select id="plataforma" name="plataforma" required>
+                        <option value="">Selecione uma opção</option>
+                        <option value="PS5">PS5</option>
+                        <option value="XBOX">XBOX</option>
+                        <option value="PC">PC</option>
+                    </select>
+                </div>
                 
                 <div class="form-group">
                     <label for="posicao">Posição Preferida</label>
@@ -1717,6 +1727,7 @@
             const idade = document.getElementById('idade').value;
             const discord = document.getElementById('discord').value;
             const posicao = document.getElementById('posicao').value;
+            const plataforma = document.getElementById('plataforma').value;
             const dias = document.getElementById('dias').value;
             const horario = document.getElementById('horario').value;
 
@@ -1725,7 +1736,7 @@
 
             // Monta a mensagem formatada
             const mensagem = `
-*🚀 Novo Candidato ao Elite FC!*
+*🚀 Novo Candidato ao CONFLITO FC!*
 
 *Informações Pessoais:*
 Nome: ${nome}
@@ -1735,6 +1746,7 @@ Discord: ${discord}
 
 *Requisitos de Jogo:*
 Posição: ${posicao}
+Plataforma: ${plataforma}
 Dias: ${dias}
 Horário (Início): ${horario}
 
