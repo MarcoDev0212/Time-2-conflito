@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CONFLITO FC - O clube elite de Pro Clubs. Junte-se à nossa equipe e conquiste títulos!">
+    <meta name="keywords" content="Pro Clubs, futebol virtual, CONFLITO FC, recrutamento, esports">
+    <meta name="author" content="CONFLITO FC">
     <title>Conflito FC | Site Oficial</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.birds.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
-    <script src="https://unpkg.com/splitting@1.0.6/dist/splitting.js"></script>
-    <link href="https://unpkg.com/splitting@1.0.6/dist/splitting.css" rel="stylesheet">
     
     <style>
         /* ==================================== */
@@ -74,11 +75,12 @@
 
         body {
             font-family: var(--font-primary);
-            background: var(--neutral-50);
+            background: transparent; /* Alterado para permitir que Vanta cubra todo o body */
             color: var(--neutral-900);
             line-height: 1.6;
             font-size: 16px;
             overflow-x: hidden;
+            position: relative; /* Necessário para o canvas do Vanta */
         }
 
         /* ==================================== */
@@ -178,6 +180,11 @@
             opacity: 0;
             transform: translateY(30px);
             transition: var(--transition-slow);
+            /* Adicionado fundo semi-transparente para permitir Vanta visível */
+            background: rgba(255, 255, 255, 0.1); /* Fundo base semi-transparente */
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            margin: 1rem 0;
         }
 
         .section.active {
@@ -387,8 +394,7 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            background: var(--gradient-hero),
-                        url('') center/cover;
+            /* Removido background fixo, agora Vanta cobre todo o body */
             overflow: hidden;
         }
 
@@ -404,6 +410,7 @@
                 rgba(245, 158, 11, 0.1) 50%, 
                 rgba(15, 23, 42, 0.1) 100%);
             animation: gradient 15s ease infinite;
+            z-index: 1;
         }
 
         .hero-content {
@@ -512,7 +519,8 @@
         /* CLUBE SECTION */
         /* ==================================== */
         .clube-section {
-            background: #0f172a;
+            /* Fundo semi-transparente para Vanta visível */
+            background: rgba(15, 23, 42, 0.8);
         }
 
         .about-grid {
@@ -528,12 +536,12 @@
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
-            color: var(--neutral-900);
+            color: var(--neutral-100); /* Ajustado para branco em fundo escuro */
         }
 
         .about-content p {
             font-size: 1.125rem;
-            color: var(--neutral-600);
+            color: var(--neutral-300); /* Ajustado para melhor legibilidade */
             margin-bottom: 1.5rem;
             line-height: 1.8;
         }
@@ -563,15 +571,16 @@
         }
 
         .stat-card {
-            background: var(--white);
+            background: rgba(255, 255, 255, 0.1); /* Semi-transparente */
             padding: 3rem 2rem;
             border-radius: 1rem;
             text-align: center;
             box-shadow: var(--shadow-lg);
             transition: var(--transition);
-            border: 1px solid var(--neutral-200);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             position: relative;
             overflow: hidden;
+            color: var(--white); /* Texto branco para contraste */
         }
 
         .stat-card::before {
@@ -598,7 +607,7 @@
             font-family: var(--font-display);
             font-size: 3.5rem;
             font-weight: 900;
-            color: var(--secondary);
+            color: var(--accent);
             margin-bottom: 0.5rem;
             position: relative;
             z-index: 2;
@@ -606,7 +615,7 @@
 
         .stat-label {
             font-size: 1.125rem;
-            color: var(--neutral-600);
+            color: var(--neutral-300);
             font-weight: 500;
             position: relative;
             z-index: 2;
@@ -616,7 +625,8 @@
         /* ELENCO SECTION - COM IMAGENS */
         /* ==================================== */
         .elenco-section {
-            background: #0f172a;  /*Colocar a cor menu Elenco*/
+            /* Fundo semi-transparente para Vanta visível */
+            background: rgba(15, 23, 42, 0.8);
         }
 
         .players-grid {
@@ -626,7 +636,7 @@
         }
 
         .player-card {
-            background: var(--white);
+            background: rgba(255, 255, 255, 0.95); /* Levemente transparente */
             border-radius: 1rem;
             overflow: hidden;
             box-shadow: var(--shadow-lg);
@@ -673,17 +683,16 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('https://kimi-web-img.moonshot.cn/img/img.freepik.com/84d70dc41e2393f345f01b6e4ecb1104c6b64c43.jpg') center/cover;
+            background: url('https://images.unsplash.com/photo-1611003229184-018b9f6e182e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover;
             opacity: 0.2;
         }
 
-        /* NOVO: Estilo para o avatar com imagem */
         .player-avatar {
             position: relative;
             z-index: 2;
-            width: 120px; /* Aumenta um pouco o tamanho */
+            width: 120px;
             height: 120px;
-            background: var(--neutral-100); /* Fundo claro para o círculo */
+            background: var(--neutral-100);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -692,21 +701,19 @@
             color: var(--secondary);
             box-shadow: var(--shadow-xl);
             transition: var(--transition);
-            overflow: hidden; /* Garante que a imagem se encaixe no círculo */
+            overflow: hidden;
         }
         
-        /* NOVO: Estilo para a tag <img> dentro do avatar */
         .player-avatar img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Garante que a imagem preencha o círculo sem distorcer */
+            object-fit: cover;
             transition: transform 0.3s;
         }
 
         .player-card:hover .player-avatar img {
-            transform: scale(1.1); /* Efeito de zoom no hover */
+            transform: scale(1.1);
         }
-        /* FIM NOVO CSS ELENCO */
 
         .player-info {
             padding: 2rem;
@@ -760,10 +767,11 @@
         }
 
         /* ==================================== */
-        /* ESCALAÇÕES SECTION */
+        /* ESCALAÇÕES SECTION - ADICIONADA COMO MELHORIA */
         /* ==================================== */
         .escalacoes-section {
-            background: var(--white);
+            /* Fundo semi-transparente para Vanta visível */
+            background: rgba(255, 255, 255, 0.8);
         }
 
         .formations-grid {
@@ -886,7 +894,8 @@
         /* REDES SOCIAIS SECTION */
         /* ==================================== */
         .redes-section {
-            background: var(--neutral-50);
+            /* Fundo semi-transparente para Vanta visível */
+            background: rgba(248, 250, 252, 0.8);
         }
 
         .social-grid {
@@ -961,7 +970,7 @@
         /* FOOTER */
         /* ==================================== */
         .footer {
-            background: var(--neutral-900);
+            background: rgba(15, 23, 42, 0.9); /* Semi-transparente para Vanta */
             color: var(--neutral-300);
             padding: 3rem 0 2rem;
             text-align: center;
@@ -986,22 +995,22 @@
         /* MODAL E FORMULÁRIO DE RECRUTAMENTO */
         /* ==================================== */
         .modal {
-            display: none; /* Escondido por padrão */
+            display: none;
             position: fixed; 
-            z-index: 2000; /* Acima de tudo */
+            z-index: 2000;
             left: 0;
             top: 0;
             width: 100%; 
             height: 100%; 
             overflow: auto; 
-            background-color: rgba(0,0,0,0.8); /* Fundo escurecido */
+            background-color: rgba(0,0,0,0.8);
             backdrop-filter: blur(5px);
             padding-top: 60px;
         }
 
         .modal-content {
             background-color: var(--white);
-            margin: 5% auto; /* 5% do topo e centralizado */
+            margin: 5% auto;
             padding: 30px;
             border-radius: 1rem;
             box-shadow: var(--shadow-2xl);
@@ -1142,7 +1151,6 @@
                 border-right: none;
             }
             
-            /* Responsividade do Modal */
             .modal-content {
                 margin: 10% 1rem;
                 padding: 20px;
@@ -1204,7 +1212,7 @@
             transition: all 0.6s ease-out;
         }
 
-        /* Cursor customizado (corrigido) */
+        /* Cursor customizado */
         .cursor {
             width: 20px;
             height: 20px;
@@ -1215,7 +1223,12 @@
             transition: transform 0.1s ease;
             z-index: 9999;
             mix-blend-mode: difference;
-            transform: translate(-50%, -50%); /* Adicionado para centralizar */
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor.hover {
+            transform: translate(-50%, -50%) scale(0.5);
+            border-color: var(--accent);
         }
 
         .cursor-follower {
@@ -1227,24 +1240,27 @@
             pointer-events: none;
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             z-index: 9998;
-            transform: translate(-50%, -50%); /* Adicionado para centralizar */
+            transform: translate(-50%, -50%);
             opacity: 0.8;
         }
+
+        .cursor-follower.hover {
+            transform: translate(-50%, -50%) scale(2.5);
+            background: rgba(245, 158, 11, 0.3);
+        }
+
         /* ==================================== */
-        /* NOVO CSS PARA LINKS SOCIAIS DO JOGADOR */
+        /* CSS PARA LINKS SOCIAIS DO JOGADOR */
         /* ==================================== */
-        
-        /* Torna o player-card um contexto de posicionamento */
         .player-card {
-            /* Já deve ter position: relative; mas garantindo */
             position: relative; 
         }
 
         .social-link {
             position: absolute;
-            top: 15px; /* Ajuste a distância do topo */
-            right: 15px; /* Ajuste a distância da direita */
-            font-size: 1.5rem; /* Tamanho do ícone */
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
             width: 35px;
             height: 35px;
             display: flex;
@@ -1252,50 +1268,51 @@
             justify-content: center;
             border-radius: 50%;
             transition: var(--transition);
-            z-index: 10; /* Garante que o ícone fique sobre outros elementos */
+            z-index: 10;
+            text-decoration: none;
         }
         
         .instagram-link {
-            /* Cor de fundo padrão, sutil */
             background: var(--neutral-100); 
-            /* Cor do ícone */
             color: var(--neutral-700); 
             box-shadow: var(--shadow-sm);
         }
 
-        /* Efeito de hover no link do Instagram (usando o gradiente da marca) */
         .instagram-link:hover {
-            /* Gradiente de cores do Instagram */
             background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            color: var(--white); /* Texto branco no hover */
+            color: var(--white);
             transform: scale(1.1) rotate(5deg);
             box-shadow: var(--shadow-md);
         }
 
-        /* Outros links sociais (exemplo, se você adicionar) */
-        .social-link.twitter-link {
-            /* Exemplo para Twitter */
-            background: #1da1f2;
-            color: var(--white);
-            right: 60px; /* Ajuste se houver mais de um ícone */
+        /* ==================================== */
+        /* SKIP LINK PARA ACESSIBILIDADE */
+        /* ==================================== */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--secondary);
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 10000;
         }
 
-        .social-link.twitter-link:hover {
-            transform: scale(1.1);
+        .skip-link:focus {
+            top: 6px;
         }
 
-        /* Se você quiser o link dentro do info */
-        .player-info .social-link {
-            position: static;
-            /* Se quiser que fique centralizado e abaixo da posição */
-            display: block; 
-            margin: 1rem auto 0.5rem;
+        /* Estilo adicional para erro no formulário */
+        .form-group input.error, .form-group select.error {
+            border-color: #dc2626 !important;
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1) !important;
         }
-
-        /* FIM NOVO CSS PARA LINKS SOCIAIS DO JOGADOR */
     </style>
 </head>
 <body>
+
+    <a href="#main-content" class="skip-link">Pular para conteúdo principal</a>
 
     <div class="cursor"></div>
     <div class="cursor-follower"></div>
@@ -1303,27 +1320,27 @@
     <header class="header">
         <div class="nav-container">
             <a href="#hero" class="logo">
-                <i class="fas fa-futbol logo-icon"></i> CONFLITO FC
+                <i class="fas fa-futbol logo-icon" aria-hidden="true"></i> CONFLITO FC
             </a>
             
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="#hero" class="nav-link active"><i class="fas fa-home"></i> Início</a></li>
-                    <li><a href="#clube" class="nav-link"><i class="fas fa-users"></i> Clube</a></li>
-                    <li><a href="#elenco" class="nav-link"><i class="fas fa-shirt"></i> Elenco</a></li>
-                    <li><a href="#redes" class="nav-link"><i class="fas fa-share-alt"></i> Redes</a></li>
-                    <li><a href="#recrutar-modal" id="open-recrutar-modal" class="btn btn-primary" onclick="openModal('recrutar-modal')"><i class="fas fa-user-plus"></i> Recrutar</a></li>
+                    <li><a href="#hero" class="nav-link active"><i class="fas fa-home" aria-hidden="true"></i> Início</a></li>
+                    <li><a href="#clube" class="nav-link"><i class="fas fa-users" aria-hidden="true"></i> Clube</a></li>
+                    <li><a href="#elenco" class="nav-link"><i class="fas fa-shirt" aria-hidden="true"></i> Elenco</a></li>
+                    <li><a href="#redes" class="nav-link"><i class="fas fa-share-alt" aria-hidden="true"></i> Redes</a></li>
+                    <li><a href="#recrutar-modal" id="open-recrutar-modal" class="btn btn-primary" onclick="openModal('recrutar-modal')" aria-label="Abrir formulário de recrutamento"><i class="fas fa-user-plus" aria-hidden="true"></i> Recrutar</a></li>
                 </ul>
             </nav>
             
-            <button class="mobile-menu-btn" aria-label="Abrir Menu Móvel">
-                <i class="fas fa-bars"></i>
+            <button class="mobile-menu-btn" aria-label="Abrir Menu Móvel" aria-expanded="false">
+                <i class="fas fa-bars" aria-hidden="true"></i>
             </button>
         </div>
     </header>
 
-    <main>
-        <section id="hero" class="hero section active">
+    <main id="main-content">
+        <section id="hero" class="hero section active" tabindex="-1">
             <div class="hero-content">
                 <h1 class="hero-title animate-fadeInUp">
                     <span id="typed-text"></span>
@@ -1333,20 +1350,20 @@
                     Somos o CONFLITO FC, uma equipe dedicada à excelência no Pro Clubs. Junte-se à nossa história de vitórias!
                 </div>
                 <div class="hero-buttons animate-fadeInUp">
-                    <a href="#clube" class="btn btn-primary glow-effect">Conheça o Clube <i class="fas fa-arrow-right"></i></a>
-                    <a href="#elenco" class="btn btn-secondary"><i class="fas fa-bullseye"></i> Nosso Elenco</a>
+                    <a href="#clube" class="btn btn-primary glow-effect">Conheça o Clube <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    <a href="#elenco" class="btn btn-secondary"><i class="fas fa-bullseye" aria-hidden="true"></i> Nosso Elenco</a>
                 </div>
                 
                 <div class="hero-stats">
-                    <div class="hero-stat animate-fadeInUp" style="animation-delay: 1.0s;">
+                    <div class="hero-stat animate-fadeInUp" style="animation-delay: 1.0s;" role="img" aria-label="Estatísticas do clube">
                         <span class="hero-stat-number" data-target="1">0</span>
                         <span class="hero-stat-label">Títulos Conquistados</span>
                     </div>
-                    <div class="hero-stat animate-fadeInUp" style="animation-delay: 1.2s;">
+                    <div class="hero-stat animate-fadeInUp" style="animation-delay: 1.2s;" role="img" aria-label="Estatísticas do clube">
                         <span class="hero-stat-number" data-target="50">0</span>+
                         <span class="hero-stat-label">Vitórias na Temporada</span>
                     </div>
-                    <div class="hero-stat animate-fadeInUp" style="animation-delay: 1.4s;">
+                    <div class="hero-stat animate-fadeInUp" style="animation-delay: 1.4s;" role="img" aria-label="Estatísticas do clube">
                         <span class="hero-stat-number" data-target="95">0</span>%
                         <span class="hero-stat-label">Taxa de Sucesso</span>
                     </div>
@@ -1354,7 +1371,7 @@
             </div>
         </section>
         
-        <section id="clube" class="clube-section section">
+        <section id="clube" class="clube-section section" tabindex="-1">
             <div class="container">
                 <h2 class="section-title animate-fadeIn">O Legado CONFLITO FC</h2>
                 <p class="section-subtitle animate-fadeIn" style="animation-delay: 0.2s;">
@@ -1366,10 +1383,10 @@
                         <h3>Nossa História e Missão</h3>
                         <p>Fundado em 2025, o CONFLITO FC nasceu com a visão de ser o clube mais organizado e vitorioso no cenário brasileiro de Pro Clubs. Cultivamos um ambiente de respeito, competitividade e amizade, sempre mirando o topo das ligas. Nossa missão é clara: **Dominar o Jogo**.</p>
                         <p>Nosso maior objetivo é a taça Guanabara e continuamos a recrutar talentos que compartilhem dessa ambição. Somos mais que um time, somos uma família.</p>
-                        <a href="#" class="btn btn-primary">Ver Mais Detalhes <i class="fas fa-file-alt"></i></a>
+                        <a href="#" class="btn btn-primary">Ver Mais Detalhes <i class="fas fa-file-alt" aria-hidden="true"></i></a>
                     </div>
                     <div class="about-image">
-                        <img src="https://kimi-web-img.moonshot.cn/img/img.freepik.com/6c2049d52033c4611413158c89b27568153c3065.jpg" alt="Foto da Equipe Elite FC">
+                        <img src="https://images.unsplash.com/photo-1559774918-58694e8a553f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Foto da equipe do CONFLITO FC em ação no campo" loading="lazy">
                     </div>
                 </div>
                 
@@ -1390,7 +1407,7 @@
             </div>
         </section>
         
-        <section id="elenco" class="elenco-section section">
+        <section id="elenco" class="elenco-section section" tabindex="-1">
             <div class="container">
                 <h2 class="section-title animate-fadeIn">Nosso Elenco do Conflito</h2>
                 <p class="section-subtitle animate-fadeIn" style="animation-delay: 0.2s;">
@@ -1398,54 +1415,60 @@
                 </p>
 
                 <div class="players-grid animate-fadeInUp" style="animation-delay: 0.4s;">
-                    <div class="player-card">
+                    <article class="player-card">
                         <div class="player-header">
                             <div class="player-avatar">
-                                <img src="[LINK DA FOTO DO JOGADOR 1 AQUI]" alt="Avatar de TheCaptain_BR">
+                                <img src="https://images.unsplash.com/photo-1611003229184-018b9f6e182e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Foto de Markito10_, meio-campista do CONFLITO FC" loading="lazy">
                             </div>
                         </div>
                         <div class="player-info">
                             <h4 class="player-name">Markito10_</h4>
                             <p class="player-position">Posição (MEI)</p>
-                            <a href="URL_DO_INSTAGRAM_DO_JOGADOR" target="_blank" class="social-link instagram-link">
-                            <i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://instagram.com/markito10_" target="_blank" rel="noopener noreferrer" class="social-link instagram-link" aria-label="Instagram de Markito10_">
+                                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                            </a>
                             <p class="player-description">Uma breve descrição sobre o jogador.</p>
-                        <div class="player-stats">
+                            <div class="player-stats">
                                 <div class="player-stat"><div class="player-stat-value">9.5</div><div class="player-stat-label">Média</div></div>
                                 <div class="player-stat"><div class="player-stat-value">55</div><div class="player-stat-label">Gols</div></div>
                                 <div class="player-stat"><div class="player-stat-value">40</div><div class="player-stat-label">Assistências</div></div>
                             </div>
                         </div>
-                    </div>
+                    </article>
                     
-                    <div class="player-card">
+                    <article class="player-card">
                         <div class="player-header">
                             <div class="player-avatar">
-                                <img src="[LINK DA FOTO DO JOGADOR 2 AQUI]" alt="Avatar de VelocidadeX">
+                                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Foto de Braga, atacante do CONFLITO FC" loading="lazy">
                             </div>
                         </div>
                         <div class="player-info">
                             <h4 class="player-name">Braga</h4>
                             <p class="player-position">Posição (ATA)</p>
-                            <a href="URL_DO_INSTAGRAM_DO_JOGADOR" target="_blank" class="social-link instagram-link">
-                            <i class="fa-brands fa-instagram"></i></a>
-                        <div class="player-stats">
-                                
-                                <div class="player-stat"><div class="player-stat-value"></div><div class="player-stat-label"></div></div>
+                            <a href="https://instagram.com/braga_fc" target="_blank" rel="noopener noreferrer" class="social-link instagram-link" aria-label="Instagram de Braga">
+                                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                            </a>
+                            <p class="player-description">Atacante veloz e letal na área.</p>
+                            <div class="player-stats">
+                                <div class="player-stat"><div class="player-stat-value">9.2</div><div class="player-stat-label">Média</div></div>
+                                <div class="player-stat"><div class="player-stat-value">45</div><div class="player-stat-label">Gols</div></div>
                                 <div class="player-stat"><div class="player-stat-value">09</div><div class="player-stat-label">Camisa</div></div>
                             </div>
                         </div>
-                    </div>
+                    </article>
                     
-                    <div class="player-card">
+                    <article class="player-card">
                         <div class="player-header">
                             <div class="player-avatar">
-                                <img src="[LINK DA FOTO DO JOGADOR 3 AQUI]" alt="Avatar de Muro_Defesa">
+                                <img src="https://images.unsplash.com/photo-1607783616288-517192e77445?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Foto de Muro_Defesa, zagueiro do CONFLITO FC" loading="lazy">
                             </div>
                         </div>
                         <div class="player-info">
                             <h4 class="player-name">Muro_Defesa</h4>
                             <p class="player-position">Zagueiro (CB)</p>
+                            <a href="https://instagram.com/murodefesa" target="_blank" rel="noopener noreferrer" class="social-link instagram-link" aria-label="Instagram de Muro_Defesa">
+                                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                            </a>
                             <p class="player-description">A muralha. Forte no desarme, excelente no jogo aéreo e voz de comando na defesa.</p>
                             <div class="player-stats">
                                 <div class="player-stat"><div class="player-stat-value">8.8</div><div class="player-stat-label">Média</div></div>
@@ -1453,17 +1476,20 @@
                                 <div class="player-stat"><div class="player-stat-value">98</div><div class="player-stat-label">Passes</div></div>
                             </div>
                         </div>
-                    </div>
+                    </article>
                     
-                    <div class="player-card">
+                    <article class="player-card">
                         <div class="player-header">
                             <div class="player-avatar">
-                                <img src="[LINK DA FOTO DO JOGADOR 4 AQUI]" alt="Avatar de TheWallKeeper">
+                                <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Foto de TheWallKeeper, goleiro do CONFLITO FC" loading="lazy">
                             </div>
                         </div>
                         <div class="player-info">
                             <h4 class="player-name">TheWallKeeper</h4>
                             <p class="player-position">Goleiro (GK)</p>
+                            <a href="https://instagram.com/thewallkeeper" target="_blank" rel="noopener noreferrer" class="social-link instagram-link" aria-label="Instagram de TheWallKeeper">
+                                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                            </a>
                             <p class="player-description">O último guardião. Reflexos rápidos e a base para a nossa construção de jogo.</p>
                             <div class="player-stats">
                                 <div class="player-stat"><div class="player-stat-value">9.3</div><div class="player-stat-label">Média</div></div>
@@ -1471,13 +1497,59 @@
                                 <div class="player-stat"><div class="player-stat-value">90%</div><div class="player-stat-label">Defesas</div></div>
                             </div>
                         </div>
-                    </div>
-                    
+                    </article>
                 </div>
             </div>
         </section>
         
-        <section id="redes" class="redes-section section">
+        <!-- Seção de Escalções adicionada como melhoria opcional -->
+        <section id="escalacoes" class="escalacoes-section section">
+            <div class="container">
+                <h2 class="section-title animate-fadeIn">Escalações Táticas</h2>
+                <p class="section-subtitle animate-fadeIn" style="animation-delay: 0.2s;">
+                    Veja nossas formações e estratégias para dominar o campo.
+                </p>
+                <div class="formations-grid animate-fadeInUp" style="animation-delay: 0.4s;">
+                    <div class="formation-card">
+                        <h3 class="formation-title">4-3-3 Ofensivo</h3>
+                        <div class="formation-pitch">
+                            <!-- Exemplo de marcadores de jogadores - posições aproximadas -->
+                            <div class="player-marker" style="top: 10%; left: 50%;" data-player="GK">GK</div>
+                            <div class="player-marker" style="top: 25%; left: 20%;" data-player="LB">LB</div>
+                            <div class="player-marker" style="top: 25%; left: 50%;" data-player="CB">CB</div>
+                            <div class="player-marker" style="top: 25%; left: 80%;" data-player="RB">RB</div>
+                            <div class="player-marker" style="top: 45%; left: 15%;" data-player="LM">LM</div>
+                            <div class="player-marker" style="top: 45%; left: 50%;" data-player="CM">CM</div>
+                            <div class="player-marker" style="top: 45%; left: 85%;" data-player="RM">RM</div>
+                            <div class="player-marker" style="top: 65%; left: 20%;" data-player="LW">LW</div>
+                            <div class="player-marker" style="top: 65%; left: 50%;" data-player="ST">ST</div>
+                            <div class="player-marker" style="top: 65%; left: 80%;" data-player="RW">RW</div>
+                        </div>
+                        <p class="formation-description">Formação agressiva para pressionar alto e explorar as laterais.</p>
+                    </div>
+                    <div class="formation-card">
+                        <h3 class="formation-title">3-5-2 Defensivo</h3>
+                        <div class="formation-pitch">
+                            <!-- Posições aproximadas para 3-5-2 -->
+                            <div class="player-marker" style="top: 10%; left: 50%;" data-player="GK">GK</div>
+                            <div class="player-marker" style="top: 25%; left: 25%;" data-player="CB">CB</div>
+                            <div class="player-marker" style="top: 25%; left: 50%;" data-player="CB">CB</div>
+                            <div class="player-marker" style="top: 25%; left: 75%;" data-player="CB">CB</div>
+                            <div class="player-marker" style="top: 45%; left: 10%;" data-player="LWB">LWB</div>
+                            <div class="player-marker" style="top: 45%; left: 30%;" data-player="CM">CM</div>
+                            <div class="player-marker" style="top: 45%; left: 50%;" data-player="CM">CM</div>
+                            <div class="player-marker" style="top: 45%; left: 70%;" data-player="CM">CM</div>
+                            <div class="player-marker" style="top: 45%; left: 90%;" data-player="RWB">RWB</div>
+                            <div class="player-marker" style="top: 65%; left: 35%;" data-player="ST">ST</div>
+                            <div class="player-marker" style="top: 65%; left: 65%;" data-player="ST">ST</div>
+                        </div>
+                        <p class="formation-description">Equilíbrio entre defesa sólida e contra-ataques rápidos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="redes" class="redes-section section" tabindex="-1">
             <div class="container">
                 <h2 class="section-title animate-fadeIn">Conecte-se Conosco</h2>
                 <p class="section-subtitle animate-fadeIn" style="animation-delay: 0.2s;">
@@ -1486,26 +1558,26 @@
 
                 <div class="social-grid animate-fadeInUp" style="animation-delay: 0.4s;">
                     
-                    <div class="social-card discord">
-                        <i class="fab fa-discord social-icon" style="color: #5865f2;"></i>
+                    <article class="social-card discord">
+                        <i class="fab fa-discord social-icon" style="color: #5865f2;" aria-hidden="true"></i>
                         <h4 class="social-title">Discord Oficial</h4>
                         <p class="social-description">Entre no nosso servidor para interagir com a equipe, participar de recrutamentos e receber notícias em primeira mão.</p>
-                        <a href="**[LINK DO SEU DISCORD AQUI]**" class="btn btn-outline" style="color: #5865f2; border-color: #5865f2;" target="_blank">Entrar no Discord</a>
-                    </div>
+                        <a href="https://discord.gg/conflito-fc" class="btn btn-outline" style="color: #5865f2; border-color: #5865f2;" target="_blank" rel="noopener noreferrer" aria-label="Entrar no Discord oficial">Entrar no Discord</a>
+                    </article>
                     
-                    <div class="social-card twitch">
-                        <i class="fab fa-twitch social-icon" style="color: #9146ff;"></i>
+                    <article class="social-card twitch">
+                        <i class="fab fa-twitch social-icon" style="color: #9146ff;" aria-hidden="true"></i>
                         <h4 class="social-title">Lives na Twitch</h4>
                         <p class="social-description">Assista aos nossos jogos ao vivo com narração e comentários. A emoção da competição em tempo real.</p>
-                        <a href="**[LINK DA SUA TWITCH AQUI]**" class="btn btn-outline" style="color: #9146ff; border-color: #9146ff;" target="_blank">Assistir Agora</a>
-                    </div>
+                        <a href="https://twitch.tv/conflito-fc" class="btn btn-outline" style="color: #9146ff; border-color: #9146ff;" target="_blank" rel="noopener noreferrer" aria-label="Assistir lives na Twitch">Assistir Agora</a>
+                    </article>
                     
-                    <div class="social-card instagram">
-                        <i class="fab fa-instagram social-icon" style="color: #e4405f;"></i>
+                    <article class="social-card instagram">
+                        <i class="fab fa-instagram social-icon" style="color: #e4405f;" aria-hidden="true"></i>
                         <h4 class="social-title">Conflito no Instagram</h4>
                         <p class="social-description">Fique por dentro dos melhores momentos, fotos dos jogadores e anúncios especiais do clube.</p>
-                        <a href="**[LINK DO SEU INSTAGRAM AQUI]**" class="btn btn-outline" style="color: #e4405f; border-color: #e4405f;" target="_blank">Seguir</a>
-                    </div>
+                        <a href="https://instagram.com/conflito_fc" class="btn btn-outline" style="color: #e4405f; border-color: #e4405f;" target="_blank" rel="noopener noreferrer" aria-label="Seguir no Instagram">Seguir</a>
+                    </article>
                 </div>
             </div>
         </section>
@@ -1514,31 +1586,31 @@
     <footer class="footer">
         <div class="footer-content">
             <p>&copy; 2025 CONFLITO FC - Pro Clubs.</p>
-            <p>Desenvolvido <b>dev.barbosa02@gmail.com</b></p>
+            <p>Desenvolvido com <i class="fas fa-heart footer-heart" aria-hidden="true"></i> por <a href="mailto:dev.barbosa02@gmail.com" style="color: var(--neutral-300);">dev.barbosa02@gmail.com</a></p>
         </div>
     </footer>
 
-    <div id="recrutar-modal" class="modal">
+    <div id="recrutar-modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('recrutar-modal')">&times;</span>
-            <h3 class="modal-title"><i class="fas fa-user-plus"></i> Recrutamento Elite FC</h3>
+            <span class="close-btn" onclick="closeModal('recrutar-modal')" aria-label="Fechar modal">&times;</span>
+            <h3 class="modal-title" id="modal-title"><i class="fas fa-user-plus" aria-hidden="true"></i> Recrutamento CONFLITO FC</h3>
             <p class="modal-subtitle">Preencha os dados e entraremos em contato via WhatsApp!</p>
 
-            <form id="recrutamento-form">
+            <form id="recrutamento-form" novalidate>
                 
                 <div class="form-group">
                     <label for="nome">Nome Completo</label>
-                    <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+                    <input type="text" id="nome" name="nome" placeholder="Seu nome" required aria-required="true">
                 </div>
                 
                 <div class="form-group">
                     <label for="id_jogo">ID/Nick no Jogo</label>
-                    <input type="text" id="id_jogo" name="id_jogo" placeholder="Ex: Player_Elite_77" required>
+                    <input type="text" id="id_jogo" name="id_jogo" placeholder="Ex: Player_Elite_77" required aria-required="true">
                 </div>
 
                 <div class="form-group">
                     <label for="idade">Idade</label>
-                    <select id="idade" name="idade" required>
+                    <select id="idade" name="idade" required aria-required="true">
                         <option value="">Selecione sua Idade</option>
                         <option value="20-30">20 a 30 anos</option>
                         <option value="31-40">31 a 40 anos</option>
@@ -1549,7 +1621,7 @@
                 
                 <div class="form-group">
                     <label for="discord">Possui Discord?</label>
-                    <select id="discord" name="discord" required>
+                    <select id="discord" name="discord" required aria-required="true">
                         <option value="">Selecione uma opção</option>
                         <option value="Sim">Sim</option>
                         <option value="Nao">Não</option>
@@ -1558,7 +1630,7 @@
 
                 <div class="form-group">
                     <label for="plataforma">Plataforma</label>
-                    <select id="plataforma" name="plataforma" required>
+                    <select id="plataforma" name="plataforma" required aria-required="true">
                         <option value="">Selecione uma opção</option>
                         <option value="PS5">PS5</option>
                         <option value="XBOX">XBOX</option>
@@ -1568,7 +1640,7 @@
                 
                 <div class="form-group">
                     <label for="posicao">Posição Preferida</label>
-                    <select id="posicao" name="posicao" required>
+                    <select id="posicao" name="posicao" required aria-required="true">
                         <option value="">Selecione a Posição</option>
                         <option value="Goleiro">Goleiro</option>
                         <option value="Zagueiro">Zagueiro</option>
@@ -1582,7 +1654,7 @@
                 
                 <div class="form-group">
                     <label for="dias">Dias Disponíveis</label>
-                    <select id="dias" name="dias" required>
+                    <select id="dias" name="dias" required aria-required="true">
                         <option value="">Selecione o dia</option>
                         <option value="Segunda">Segunda-Feira</option>
                         <option value="Terça">Terça-Feira</option>
@@ -1593,7 +1665,7 @@
 
                 <div class="form-group">
                     <label for="horario">Horário de Disponibilidade (Início)</label>
-                    <select id="horario" name="horario" required>
+                    <select id="horario" name="horario" required aria-required="true">
                         <option value="">Selecione o Horário</option>
                         <option value="19:30">19:30</option>
                         <option value="20:00">20:00</option>
@@ -1602,7 +1674,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary btn-submit">
-                    Enviar via WhatsApp <i class="fab fa-whatsapp"></i>
+                    Enviar via WhatsApp <i class="fab fa-whatsapp" aria-hidden="true"></i>
                 </button>
             </form>
             <p class="whatsapp-disclaimer">Ao clicar, você será redirecionado para o WhatsApp para enviar as informações.</p>
@@ -1610,13 +1682,11 @@
     </div>
     
     <script>
-        // Função para Inicializar o Vanta.js (efeito de fundo)
+        // Função para Inicializar o Vanta.js (agora aplicado ao body inteiro)
         function initVanta() {
-            // Apenas inicializa o VANTA.BIRDS na seção HERO
-            const heroElement = document.getElementById("hero");
-            if (heroElement) {
+            if (VANTA && VANTA.BIRDS) {
                 VANTA.BIRDS({
-                    el: "#hero",
+                    el: "body", // Alterado para body para cobrir toda a página
                     mouseControls: true,
                     touchControls: true,
                     gyroControls: false,
@@ -1669,21 +1739,18 @@
         const options = {
             root: null,
             rootMargin: '0px',
-            threshold: 0.2 // A seção precisa estar 20% visível para ser ativada
+            threshold: 0.2
         };
 
         const sectionObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 const section = entry.target;
                 if (entry.isIntersecting) {
-                    // 1. Animação da Seção
                     section.classList.add('active');
                     
-                    // 2. Animação dos Contadores
                     const counters = section.querySelectorAll('.hero-stat-number, .stat-number');
                     counters.forEach(counter => {
                         const target = parseFloat(counter.getAttribute('data-target'));
-                        // Verifica se o contador já foi ativado
                         if (!counter.hasAttribute('data-animated')) {
                             animateCounter(counter, target);
                             counter.setAttribute('data-animated', 'true');
@@ -1697,15 +1764,18 @@
         // LÓGICA DO MODAL (Recrutamento)
         // ====================================
 
-        // Funções para abrir e fechar o modal
         function openModal(id) {
-            document.getElementById(id).style.display = 'block';
-            document.body.style.overflow = 'hidden'; // Evita scroll ao abrir modal
+            const modal = document.getElementById(id);
+            modal.style.display = 'block';
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
         }
 
         function closeModal(id) {
-            document.getElementById(id).style.display = 'none';
-            document.body.style.overflow = 'auto'; // Restaura o scroll
+            const modal = document.getElementById(id);
+            modal.style.display = 'none';
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = 'auto';
         }
 
         // Fechar modal ao clicar fora dele
@@ -1716,10 +1786,27 @@
             }
         }
 
-
-        // Lógica de Submissão do Formulário para WhatsApp
+        // Validação melhorada do formulário
         document.getElementById('recrutamento-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Impede o envio padrão do formulário
+            event.preventDefault();
+
+            // Verificação de campos obrigatórios
+            const form = event.target;
+            const requiredFields = form.querySelectorAll('[required]');
+            let isValid = true;
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.classList.add('error'); // Adicionar classe para estilo de erro
+                    isValid = false;
+                } else {
+                    field.classList.remove('error');
+                }
+            });
+
+            if (!isValid) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
 
             // Coleta dos dados
             const nome = document.getElementById('nome').value;
@@ -1731,10 +1818,8 @@
             const dias = document.getElementById('dias').value;
             const horario = document.getElementById('horario').value;
 
-            // Número de telefone do destino (51992520046, Brasil: 55 + 51 + 992520046)
             const numeroWhatsapp = '5551992520046';
 
-            // Monta a mensagem formatada
             const mensagem = `
 *🚀 Novo Candidato ao CONFLITO FC!*
 
@@ -1753,28 +1838,20 @@ Horário (Início): ${horario}
 *Por favor, responda a esta mensagem no WhatsApp.*
 `;
             
-            // Codifica a mensagem para URL
             const mensagemCodificada = encodeURIComponent(mensagem);
-
-            // Cria o link do WhatsApp
             const linkWhatsapp = `https://api.whatsapp.com/send?phone=${numeroWhatsapp}&text=${mensagemCodificada}`;
 
-            // Abre a nova aba/janela para o WhatsApp
             window.open(linkWhatsapp, '_blank');
             
-            // Fechar o modal após o envio
             closeModal('recrutar-modal');
-            document.getElementById('recrutamento-form').reset(); // Limpa o formulário
+            form.reset();
         });
         
         // Função principal de Inicialização
         document.addEventListener('DOMContentLoaded', () => {
-            // Inicializa Efeitos de Terceiros
-            initVanta();
+            initVanta(); // Inicializa Vanta no body
             initTyped();
-            Splitting(); 
 
-            // Observa todas as seções para animação de Fade-in
             document.querySelectorAll('.section').forEach(section => {
                 sectionObserver.observe(section);
             });
@@ -1785,7 +1862,6 @@ Horário (Início): ${horario}
             const menuBtn = document.querySelector('.mobile-menu-btn');
             const navMenu = document.querySelector('.nav-menu');
 
-            // Efeito Scroll no Header
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 50) {
                     header.classList.add('scrolled');
@@ -1794,20 +1870,20 @@ Horário (Início): ${horario}
                 }
             });
 
-            // Toggle Menu Mobile
+            // Toggle Menu Mobile com acessibilidade
             menuBtn.addEventListener('click', () => {
-                navMenu.classList.toggle('active');
+                const isActive = navMenu.classList.toggle('active');
+                menuBtn.setAttribute('aria-expanded', isActive);
                 const icon = menuBtn.querySelector('i');
                 icon.classList.toggle('fa-bars');
                 icon.classList.toggle('fa-xmark');
             });
             
-            // Navegação Suave (se o CSS de scroll-behavior já não estiver ativo) e Fechar Menu
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
-                    // Fecha menu mobile
                     if (navMenu.classList.contains('active')) {
                         navMenu.classList.remove('active');
+                        menuBtn.setAttribute('aria-expanded', 'false');
                         const icon = menuBtn.querySelector('i');
                         icon.classList.remove('fa-xmark');
                         icon.classList.add('fa-bars');
@@ -1815,7 +1891,7 @@ Horário (Início): ${horario}
                 });
             });
 
-            // Adicionar logicamente a classe 'active' ao link de navegação
+            // Nav active observer
             const navObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -1828,7 +1904,7 @@ Horário (Início): ${horario}
                         });
                     }
                 });
-            }, { rootMargin: '-10% 0px -85% 0px' }); // Ajusta o ponto de ativação
+            }, { rootMargin: '-10% 0px -85% 0px' });
 
             document.querySelectorAll('.section').forEach(section => {
                 navObserver.observe(section);
@@ -1840,40 +1916,31 @@ Horário (Início): ${horario}
 
             if (cursor && cursorFollower) {
                 document.addEventListener('mousemove', e => {
-                    // Atualiza a posição X e Y das variáveis CSS
-                    document.documentElement.style.setProperty('--x', `${e.clientX}px`);
-                    document.documentElement.style.setProperty('--y', `${e.clientY}px`);
-
-                    // Usa as variáveis CSS no cursor para transição mais suave
                     cursor.style.left = `${e.clientX}px`;
                     cursor.style.top = `${e.clientY}px`;
                     cursorFollower.style.left = `${e.clientX}px`;
                     cursorFollower.style.top = `${e.clientY}px`;
                 });
                 
-                document.querySelectorAll('a, button, .player-marker, .hero-stat, .stat-card, .social-card, .player-card, .btn').forEach(el => {
+                const interactiveElements = document.querySelectorAll('a, button, .player-marker, .hero-stat, .stat-card, .social-card, .player-card, .btn');
+                interactiveElements.forEach(el => {
                     el.addEventListener('mouseenter', () => {
                         cursor.classList.add('hover');
                         cursorFollower.classList.add('hover');
-                        cursorFollower.style.transform = 'translate(-50%, -50%) scale(2.5)';
                     });
                     el.addEventListener('mouseleave', () => {
                         cursor.classList.remove('hover');
                         cursorFollower.classList.remove('hover');
-                        cursorFollower.style.transform = 'translate(-50%, -50%) scale(1)';
                     });
                 });
-
-                // Adicionar estilos de hover para o cursor (precisa de um pequeno CSS adicional para isso)
-                const style = document.createElement('style');
-                style.innerHTML = `
-                    .cursor.hover { transform: translate(-50%, -50%) scale(0.5); border-color: var(--accent); }
-                    .cursor-follower.hover { transform: translate(-50%, -50%) scale(2.5); background: rgba(245, 158, 11, 0.3); }
-                `;
-                document.head.appendChild(style);
             }
+
+            // Foco no skip link
+            const skipLink = document.querySelector('.skip-link');
+            skipLink.addEventListener('focus', () => {
+                skipLink.blur();
+            });
         });
-        
     </script>
 </body>
 </html>
