@@ -14,16 +14,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
     
     <style>
-        /* ==================================== */
-        /* VARIÁVEIS E RESET CSS */
-        /* ==================================== */
+        /* Variáveis e Reset CSS */
         :root {
-            /* Cores do Clube - Paleta mais sofisticada */
-            --primary: #0f172a; /* Azul escuro sofisticado */
-            --secondary: #dc2626; /* Vermelho elegante */
-            --accent: #f59e0b; /* Dourado de destaque */
-            
-            /* Cores Neutras */
+            --primary: #0f172a;
+            --secondary: #dc2626;
+            --accent: #f59e0b;
             --neutral-900: #0f172a;
             --neutral-800: #1e293b;
             --neutral-700: #334155;
@@ -35,27 +30,17 @@
             --neutral-100: #ffffff;
             --neutral-50: #f8fafc;
             --white: #fffafa;
-            
-            /* Gradientes */
             --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--neutral-800) 100%);
             --gradient-secondary: linear-gradient(135deg, var(--secondary) 0%, #b91c1c 100%);
             --gradient-accent: linear-gradient(135deg, var(--accent) 0%, #d97706 100%);
             --gradient-hero: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%);
-            
-            /* Tipografia */
             --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-display: 'Playfair Display', Georgia, serif;
-            
-            /* Espaçamento */
             --container-max: 1400px;
             --section-padding: 6rem 0;
             --element-gap: 2rem;
-            
-            /* Animações */
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            
-            /* Sombras */
             --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
             --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -63,101 +48,29 @@
             --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: var(--font-primary);
-            background: transparent; /* Alterado para permitir que Vanta cubra todo o body */
+            background: transparent;
             color: var(--neutral-900);
             line-height: 1.6;
             font-size: 16px;
             overflow-x: hidden;
-            position: relative; /* Necessário para o canvas do Vanta */
+            position: relative;
         }
 
-        /* ==================================== */
-        /* ANIMAÇÕES */
-        /* ==================================== */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes scaleIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(220, 38, 38, 0.3); }
-            50% { box-shadow: 0 0 40px rgba(220, 38, 38, 0.6); }
-        }
-
-        @keyframes typewriter {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
-        @keyframes blink {
-            0%, 50% { border-color: transparent; }
-            51%, 100% { border-color: var(--accent); }
-        }
-
-        @keyframes rotate3d {
-            0% { transform: rotateY(0deg); }
-            100% { transform: rotateY(360deg); }
-        }
-
-        @keyframes morphing {
-            0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
-            100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-        }
-
+        /* Animações */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes slideInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes scaleIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+        @keyframes gradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+        @keyframes glow { 0%, 100% { box-shadow: 0 0 20px rgba(220, 38, 38, 0.3); } 50% { box-shadow: 0 0 40px rgba(220, 38, 38, 0.6); } }
         .animate-fadeIn { animation: fadeIn 0.8s ease-out forwards; }
         .animate-fadeInUp { animation: fadeInUp 0.8s ease-out forwards; }
         .animate-slideInLeft { animation: slideInLeft 0.8s ease-out forwards; }
@@ -166,32 +79,19 @@
         .animate-pulse { animation: pulse 2s infinite; }
         .animate-float { animation: float 3s ease-in-out infinite; }
 
-        /* ==================================== */
-        /* UTILITÁRIOS */
-        /* ==================================== */
-        .container {
-            max-width: var(--container-max);
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
+        /* Utilitários */
+        .container { max-width: var(--container-max); margin: 0 auto; padding: 0 2rem; }
         .section {
             padding: var(--section-padding);
             opacity: 0;
             transform: translateY(30px);
             transition: var(--transition-slow);
-            /* Adicionado fundo semi-transparente para permitir Vanta visível */
-            background: rgba(255, 255, 255, 0.1); /* Fundo base semi-transparente */
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border-radius: 1rem;
             margin: 1rem 0;
         }
-
-        .section.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
+        .section.active { opacity: 1; transform: translateY(0); }
         .section-title {
             font-family: var(--font-display);
             font-size: clamp(2.5rem, 5vw, 4rem);
@@ -201,7 +101,6 @@
             color: #fafafa;
             line-height: 1.1;
         }
-
         .section-subtitle {
             font-size: 1.25rem;
             text-align: center;
@@ -211,7 +110,6 @@
             margin-left: auto;
             margin-right: auto;
         }
-
         .btn {
             display: inline-flex;
             align-items: center;
@@ -228,7 +126,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .btn::before {
             content: '';
             position: absolute;
@@ -239,49 +136,38 @@
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
             transition: left 0.5s;
         }
-
-        .btn:hover::before {
-            left: 100%;
-        }
-
+        .btn:hover::before { left: 100%; }
         .btn-primary {
             background: var(--gradient-secondary);
             color: var(--white);
             box-shadow: var(--shadow-lg);
         }
-
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: var(--shadow-xl);
             animation: glow 2s ease-in-out infinite;
         }
-
         .btn-secondary {
             background: var(--gradient-accent);
             color: var(--white);
             box-shadow: var(--shadow-md);
         }
-
         .btn-secondary:hover {
             transform: translateY(-2px);
             box-shadow: var(--shadow-lg);
         }
-
         .btn-outline {
             background: transparent;
             color: var(--neutral-900);
             border: 2px solid var(--neutral-300);
         }
-
         .btn-outline:hover {
             background: var(--neutral-900);
             color: var(--white);
             border-color: var(--neutral-900);
         }
 
-        /* ==================================== */
-        /* HEADER E NAVEGAÇÃO */
-        /* ==================================== */
+        /* Header e Navegação */
         .header {
             position: fixed;
             top: 0;
@@ -293,12 +179,10 @@
             z-index: 1000;
             transition: var(--transition);
         }
-
         .header.scrolled {
             background: rgba(240, 239, 240, 0.98);
             box-shadow: var(--shadow-lg);
         }
-
         .nav-container {
             display: flex;
             align-items: center;
@@ -307,7 +191,6 @@
             max-width: var(--container-max);
             margin: 0 auto;
         }
-
         .logo {
             display: flex;
             align-items: center;
@@ -319,24 +202,18 @@
             text-decoration: none;
             transition: var(--transition);
         }
-
-        .logo:hover {
-            transform: scale(1.05);
-        }
-
+        .logo:hover { transform: scale(1.05); }
         .logo-icon {
             color: var(--secondary);
             font-size: 2rem;
             animation: pulse 2s infinite;
         }
-
         .nav-menu {
             display: flex;
             align-items: center;
             gap: 2rem;
             list-style: none;
         }
-
         .nav-link {
             position: relative;
             color: var(--neutral-700);
@@ -349,17 +226,14 @@
             align-items: center;
             gap: 0.5rem;
         }
-
         .nav-link:hover {
             color: var(--neutral-900);
             background: rgba(15, 23, 42, 0.05);
         }
-
         .nav-link.active {
             color: var(--secondary);
             background: rgba(220, 38, 38, 0.1);
         }
-
         .nav-link.active::after {
             content: '';
             position: absolute;
@@ -371,7 +245,6 @@
             background: var(--secondary);
             border-radius: 50%;
         }
-
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -381,23 +254,16 @@
             cursor: pointer;
             transition: var(--transition);
         }
+        .mobile-menu-btn:hover { color: var(--neutral-900); }
 
-        .mobile-menu-btn:hover {
-            color: var(--neutral-900);
-        }
-
-        /* ==================================== */
-        /* HERO SECTION */
-        /* ==================================== */
+        /* Hero Section */
         .hero {
             position: relative;
             min-height: 100vh;
             display: flex;
             align-items: center;
-            /* Removido background fixo, agora Vanta cobre todo o body */
             overflow: hidden;
         }
-
         .hero::before {
             content: '';
             position: absolute;
@@ -405,14 +271,10 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(45deg, 
-                rgba(220, 38, 38, 0.1) 0%, 
-                rgba(245, 158, 11, 0.1) 50%, 
-                rgba(15, 23, 42, 0.1) 100%);
+            background: linear-gradient(45deg, rgba(220, 38, 38, 0.1) 0%, rgba(245, 158, 11, 0.1) 50%, rgba(15, 23, 42, 0.1) 100%);
             animation: gradient 15s ease infinite;
             z-index: 1;
         }
-
         .hero-content {
             position: relative;
             z-index: 2;
@@ -422,7 +284,6 @@
             text-align: center;
             color: var(--white);
         }
-
         .hero-title {
             font-family: var(--font-display);
             font-size: clamp(3rem, 8vw, 6rem);
@@ -434,14 +295,12 @@
             white-space: nowrap;
             overflow: hidden;
         }
-
         .hero-subtitle {
             font-size: clamp(1.25rem, 3vw, 1.75rem);
             margin-bottom: 2rem;
             opacity: 0.9;
             animation: fadeInUp 1s ease-out 0.2s both;
         }
-
         .hero-description {
             font-size: 1.125rem;
             max-width: 600px;
@@ -449,7 +308,6 @@
             opacity: 0.8;
             animation: fadeInUp 1s ease-out 0.4s both;
         }
-
         .hero-buttons {
             display: flex;
             gap: 1rem;
@@ -457,7 +315,6 @@
             flex-wrap: wrap;
             animation: fadeInUp 1s ease-out 0.6s both;
         }
-
         .hero-stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -465,7 +322,6 @@
             margin-top: 4rem;
             animation: fadeInUp 1s ease-out 0.8s both;
         }
-
         .hero-stat {
             text-align: center;
             padding: 2rem;
@@ -477,7 +333,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .hero-stat::before {
             content: '';
             position: absolute;
@@ -488,16 +343,11 @@
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
             transition: left 0.8s;
         }
-
-        .hero-stat:hover::before {
-            left: 100%;
-        }
-
+        .hero-stat:hover::before { left: 100%; }
         .hero-stat:hover {
             transform: translateY(-8px);
             background: rgba(255, 255, 255, 0.15);
         }
-
         .hero-stat-number {
             font-family: var(--font-display);
             font-size: 3rem;
@@ -507,7 +357,6 @@
             position: relative;
             z-index: 2;
         }
-
         .hero-stat-label {
             font-size: 1rem;
             opacity: 0.9;
@@ -515,14 +364,8 @@
             z-index: 2;
         }
 
-        /* ==================================== */
-        /* CLUBE SECTION */
-        /* ==================================== */
-        .clube-section {
-            /* Fundo semi-transparente para Vanta visível */
-            background: rgba(15, 23, 42, 0.8);
-        }
-
+        /* Clube Section */
+        .clube-section { background: rgba(15, 23, 42, 0.8); }
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -530,48 +373,39 @@
             align-items: center;
             margin-bottom: 6rem;
         }
-
         .about-content h3 {
             font-family: var(--font-display);
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
-            color: var(--neutral-100); /* Ajustado para branco em fundo escuro */
+            color: var(--neutral-100);
         }
-
         .about-content p {
             font-size: 1.125rem;
-            color: var(--neutral-300); /* Ajustado para melhor legibilidade */
+            color: var(--neutral-300);
             margin-bottom: 1.5rem;
             line-height: 1.8;
         }
-
         .about-image {
             position: relative;
             border-radius: 1rem;
             overflow: hidden;
             box-shadow: var(--shadow-2xl);
         }
-
         .about-image img {
             width: 100%;
             height: 400px;
             object-fit: cover;
             transition: var(--transition);
         }
-
-        .about-image:hover img {
-            transform: scale(1.05);
-        }
-
+        .about-image:hover img { transform: scale(1.05); }
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
         }
-
         .stat-card {
-            background: rgba(255, 255, 255, 0.1); /* Semi-transparente */
+            background: rgba(255, 255, 255, 0.1);
             padding: 3rem 2rem;
             border-radius: 1rem;
             text-align: center;
@@ -580,9 +414,8 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             position: relative;
             overflow: hidden;
-            color: var(--white); /* Texto branco para contraste */
+            color: var(--white);
         }
-
         .stat-card::before {
             content: '';
             position: absolute;
@@ -593,16 +426,11 @@
             background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.05), transparent);
             transition: left 0.8s;
         }
-
-        .stat-card:hover::before {
-            left: 100%;
-        }
-
+        .stat-card:hover::before { left: 100%; }
         .stat-card:hover {
             transform: translateY(-8px);
             box-shadow: var(--shadow-2xl);
         }
-
         .stat-number {
             font-family: var(--font-display);
             font-size: 3.5rem;
@@ -612,7 +440,6 @@
             position: relative;
             z-index: 2;
         }
-
         .stat-label {
             font-size: 1.125rem;
             color: var(--neutral-300);
@@ -621,22 +448,15 @@
             z-index: 2;
         }
 
-        /* ==================================== */
-        /* ELENCO SECTION - COM IMAGENS */
-        /* ==================================== */
-        .elenco-section {
-            /* Fundo semi-transparente para Vanta visível */
-            background: rgba(15, 23, 42, 0.8);
-        }
-
+        /* Elenco Section */
+        .elenco-section { background: rgba(15, 23, 42, 0.8); }
         .players-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
         }
-
         .player-card {
-            background: rgba(255, 255, 255, 0.95); /* Levemente transparente */
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 1rem;
             overflow: hidden;
             box-shadow: var(--shadow-lg);
@@ -644,7 +464,6 @@
             border: 1px solid var(--neutral-200);
             position: relative;
         }
-
         .player-card::before {
             content: '';
             position: absolute;
@@ -656,16 +475,11 @@
             transform: scaleX(0);
             transition: transform 0.3s ease;
         }
-
-        .player-card:hover::before {
-            transform: scaleX(1);
-        }
-
+        .player-card:hover::before { transform: scaleX(1); }
         .player-card:hover {
             transform: translateY(-10px);
             box-shadow: var(--shadow-2xl);
         }
-
         .player-header {
             position: relative;
             height: 200px;
@@ -675,7 +489,6 @@
             justify-content: center;
             overflow: hidden;
         }
-
         .player-header::before {
             content: '';
             position: absolute;
@@ -686,7 +499,6 @@
             background: url('https://images.unsplash.com/photo-1611003229184-018b9f6e182e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover;
             opacity: 0.2;
         }
-
         .player-avatar {
             position: relative;
             z-index: 2;
@@ -703,23 +515,14 @@
             transition: var(--transition);
             overflow: hidden;
         }
-        
         .player-avatar img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.3s;
         }
-
-        .player-card:hover .player-avatar img {
-            transform: scale(1.1);
-        }
-
-        .player-info {
-            padding: 2rem;
-            text-align: center;
-        }
-
+        .player-card:hover .player-avatar img { transform: scale(1.1); }
+        .player-info { padding: 2rem; text-align: center; }
         .player-name {
             font-family: var(--font-display);
             font-size: 1.5rem;
@@ -727,20 +530,17 @@
             color: var(--neutral-900);
             margin-bottom: 0.5rem;
         }
-
         .player-position {
             color: var(--secondary);
             font-weight: 600;
             margin-bottom: 1rem;
         }
-
         .player-description {
             color: var(--neutral-600);
             font-size: 0.9rem;
             margin-bottom: 1.5rem;
             line-height: 1.5;
         }
-
         .player-stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -749,513 +549,38 @@
             padding-top: 1.5rem;
             border-top: 1px solid var(--neutral-200);
         }
-
-        .player-stat {
-            text-align: center;
-        }
-
+        .player-stat { text-align: center; }
         .player-stat-value {
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--accent);
             margin-bottom: 0.25rem;
         }
-
         .player-stat-label {
             font-size: 0.875rem;
             color: var(--neutral-600);
         }
-
-        /* ==================================== */
-        /* ESCALAÇÕES SECTION - ADICIONADA COMO MELHORIA */
-        /* ==================================== */
-        .escalacoes-section {
-            /* Fundo semi-transparente para Vanta visível */
-            background: rgba(255, 255, 255, 0.8);
-        }
-
-        .formations-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 3rem;
-        }
-
-        .formation-card {
-            background: var(--white);
-            border-radius: 1rem;
-            padding: 2rem;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid var(--neutral-200);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .formation-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-accent);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .formation-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .formation-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-2xl);
-        }
-
-        .formation-title {
-            font-family: var(--font-display);
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: var(--neutral-900);
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .formation-pitch {
-            position: relative;
-            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
-            height: 350px;
-            border-radius: 0.5rem;
-            margin-bottom: 1.5rem;
-            border: 3px solid var(--white);
-            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
-            background-image: 
-                linear-gradient(90deg, rgba(255,255,255,0.1) 50%, transparent 50%),
-                linear-gradient(rgba(255,255,255,0.1) 50%, transparent 50%);
-            background-size: 40px 40px;
-        }
-
-        .formation-pitch::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: rgba(255, 255, 255, 0.5);
-        }
-
-        .formation-pitch::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80px;
-            height: 80px;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-        }
-
-        .player-marker {
-            position: absolute;
-            width: 45px;
-            height: 45px;
-            background: var(--white);
-            border: 3px solid var(--secondary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--neutral-900);
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-            cursor: pointer;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .player-marker:hover {
-            transform: scale(1.3);
-            background: var(--accent);
-            color: var(--white);
-            border-color: var(--accent);
-            animation: none;
-        }
-
-        .formation-description {
-            color: var(--neutral-600);
-            line-height: 1.6;
-            text-align: center;
-        }
-
-        /* ==================================== */
-        /* REDES SOCIAIS SECTION */
-        /* ==================================== */
-        .redes-section {
-            /* Fundo semi-transparente para Vanta visível */
-            background: rgba(248, 250, 252, 0.8);
-        }
-
-        .social-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .social-card {
-            background: var(--white);
-            padding: 3rem 2rem;
-            border-radius: 1rem;
-            text-align: center;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid var(--neutral-200);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .social-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-secondary);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .social-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .social-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-2xl);
-        }
-
-        .social-card.discord::before { background: linear-gradient(90deg, #5865f2, #7289da); }
-        .social-card.twitch::before { background: linear-gradient(90deg, #9146ff, #6441a5); }
-        .social-card.instagram::before { background: linear-gradient(90deg, #e4405f, #c13584, #833ab4); }
-        .social-card.youtube::before { background: linear-gradient(90deg, #ff0000, #cc0000); }
-
-        .social-icon {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            transition: var(--transition);
-        }
-
-        .social-card:hover .social-icon {
-            transform: scale(1.2) rotate(5deg);
-        }
-
-        .social-title {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--neutral-900);
-            margin-bottom: 1rem;
-        }
-
-        .social-description {
-            color: var(--neutral-600);
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        /* ==================================== */
-        /* FOOTER */
-        /* ==================================== */
-        .footer {
-            background: rgba(15, 23, 42, 0.9); /* Semi-transparente para Vanta */
-            color: var(--neutral-300);
-            padding: 3rem 0 2rem;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: var(--container-max);
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .footer p {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-heart {
-            color: var(--secondary);
-            animation: pulse 2s infinite;
-        }
-
-        /* ==================================== */
-        /* MODAL E FORMULÁRIO DE RECRUTAMENTO */
-        /* ==================================== */
-        .modal {
-            display: none;
-            position: fixed; 
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%; 
-            height: 100%; 
-            overflow: auto; 
-            background-color: rgba(0,0,0,0.8);
-            backdrop-filter: blur(5px);
-            padding-top: 60px;
-        }
-
-        .modal-content {
-            background-color: var(--white);
-            margin: 5% auto;
-            padding: 30px;
-            border-radius: 1rem;
-            box-shadow: var(--shadow-2xl);
-            max-width: 500px;
-            position: relative;
-            animation: scaleIn 0.3s ease-out;
-        }
-
-        .modal-title {
+        /* Estilo para grupos de posições */
+        .position-group { margin-bottom: 4rem; }
+        .position-title {
             font-family: var(--font-display);
             font-size: 2rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--secondary);
-            text-align: center;
-        }
-
-        .modal-subtitle {
-            text-align: center;
-            color: var(--neutral-600);
+            color: var(--neutral-100);
             margin-bottom: 2rem;
-        }
-
-        .close-btn {
-            color: var(--neutral-500);
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            transition: var(--transition);
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            cursor: pointer;
-        }
-
-        .close-btn:hover,
-        .close-btn:focus {
-            color: var(--neutral-900);
-            text-decoration: none;
-            transform: scale(1.1);
-        }
-
-        .form-group {
-            margin-bottom: 1.25rem;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--neutral-800);
-        }
-
-        .form-group input[type="text"],
-        .form-group select {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid var(--neutral-300);
-            border-radius: 0.5rem;
-            font-size: 1rem;
-            background: var(--neutral-50);
-            transition: var(--transition);
-        }
-
-        .form-group input[type="text"]:focus,
-        .form-group select:focus {
-            border-color: var(--secondary);
-            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
-            outline: none;
-            background: var(--white);
-        }
-
-        .btn-submit {
-            width: 100%;
-            margin-top: 1.5rem;
-            padding: 1rem;
-            font-size: 1.125rem;
-        }
-
-        .whatsapp-disclaimer {
-            margin-top: 1rem;
-            font-size: 0.8rem;
-            color: var(--neutral-500);
             text-align: center;
+            position: relative;
         }
-        
-        /* ==================================== */
-        /* RESPONSIVIDADE */
-        /* ==================================== */
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--white);
-                flex-direction: column;
-                padding: 2rem;
-                box-shadow: var(--shadow-lg);
-                border-top: 1px solid var(--neutral-200);
-            }
-
-            .nav-menu.active {
-                display: flex;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .formations-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .formation-pitch {
-                height: 280px;
-            }
-
-            .player-marker {
-                width: 35px;
-                height: 35px;
-                font-size: 0.625rem;
-            }
-
-            .hero-title {
-                white-space: normal;
-                border-right: none;
-            }
-            
-            .modal-content {
-                margin: 10% 1rem;
-                padding: 20px;
-            }
+        .position-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: var(--gradient-secondary);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
         }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 1rem;
-            }
-
-            .section {
-                padding: 4rem 0;
-            }
-
-            .hero-stat-number {
-                font-size: 2.5rem;
-            }
-
-            .stat-number {
-                font-size: 2.5rem;
-            }
-
-            .players-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .social-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* ==================================== */
-        /* EFEITOS ADICIONAIS */
-        /* ==================================== */
-        .shimmer {
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            background-size: 200% 100%;
-            animation: shimmer 2s infinite;
-        }
-
-        .glow-effect {
-            animation: glow 2s ease-in-out infinite;
-        }
-
-        .parallax-element {
-            transition: transform 0.1s ease-out;
-        }
-
-        /* Loading animation */
-        .loading {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        .loaded {
-            opacity: 1;
-            transform: translateY(0);
-            transition: all 0.6s ease-out;
-        }
-
-        /* Cursor customizado */
-        .cursor {
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--secondary);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            transition: transform 0.1s ease;
-            z-index: 9999;
-            mix-blend-mode: difference;
-            transform: translate(-50%, -50%);
-        }
-
-        .cursor.hover {
-            transform: translate(-50%, -50%) scale(0.5);
-            border-color: var(--accent);
-        }
-
-        .cursor-follower {
-            width: 40px;
-            height: 40px;
-            background: rgba(220, 38, 38, 0.1);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            z-index: 9998;
-            transform: translate(-50%, -50%);
-            opacity: 0.8;
-        }
-
-        .cursor-follower.hover {
-            transform: translate(-50%, -50%) scale(2.5);
-            background: rgba(245, 158, 11, 0.3);
-        }
-
-        /* ==================================== */
-        /* CSS PARA LINKS SOCIAIS DO JOGADOR */
-        /* ==================================== */
-        .player-card {
-            position: relative; 
-        }
-
+        /* Links Sociais dos Jogadores */
         .social-link {
             position: absolute;
             top: 15px;
@@ -1271,13 +596,11 @@
             z-index: 10;
             text-decoration: none;
         }
-        
         .instagram-link {
-            background: var(--neutral-100); 
-            color: var(--neutral-700); 
+            background: var(--neutral-100);
+            color: var(--neutral-700);
             box-shadow: var(--shadow-sm);
         }
-
         .instagram-link:hover {
             background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
             color: var(--white);
@@ -1285,9 +608,202 @@
             box-shadow: var(--shadow-md);
         }
 
-        /* ==================================== */
-        /* SKIP LINK PARA ACESSIBILIDADE */
-        /* ==================================== */
+        /* Redes Section */
+        .redes-section { background: rgba(248, 250, 252, 0.8); }
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .social-card {
+            background: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--neutral-200);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .social-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-secondary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        .social-card:hover::before { transform: scaleX(1); }
+        .social-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-2xl);
+        }
+        .social-card.discord::before { background: linear-gradient(90deg, #5865f2, #7289da); }
+        .social-card.twitch::before { background: linear-gradient(90deg, #9146ff, #6441a5); }
+        .social-card.instagram::before { background: linear-gradient(90deg, #e4405f, #c13584, #833ab4); }
+        .social-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+        .social-card:hover .social-icon { transform: scale(1.2) rotate(5deg); }
+        .social-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--neutral-900);
+            margin-bottom: 1rem;
+        }
+        .social-description {
+            color: var(--neutral-600);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(15, 23, 42, 0.9);
+            color: var(--neutral-300);
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+        .footer-content { max-width: var(--container-max); margin: 0 auto; padding: 0 2rem; }
+        .footer p { margin-bottom: 0.5rem; }
+        .footer-heart { color: var(--secondary); animation: pulse 2s infinite; }
+
+        /* Modal e Formulário */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: var(--white);
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-2xl);
+            max-width: 500px;
+            position: relative;
+            animation: scaleIn 0.3s ease-out;
+        }
+        .modal-title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+            text-align: center;
+        }
+        .modal-subtitle {
+            text-align: center;
+            color: var(--neutral-600);
+            margin-bottom: 2rem;
+        }
+        .close-btn {
+            color: var(--neutral-500);
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            transition: var(--transition);
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            cursor: pointer;
+        }
+        .close-btn:hover, .close-btn:focus {
+            color: var(--neutral-900);
+            text-decoration: none;
+            transform: scale(1.1);
+        }
+        .form-group { margin-bottom: 1.25rem; }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--neutral-800);
+        }
+        .form-group input[type="text"], .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--neutral-300);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            background: var(--neutral-50);
+            transition: var(--transition);
+        }
+        .form-group input[type="text"]:focus, .form-group select:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+            outline: none;
+            background: var(--white);
+        }
+        .btn-submit {
+            width: 100%;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            font-size: 1.125rem;
+        }
+        .whatsapp-disclaimer {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: var(--neutral-500);
+            text-align: center;
+        }
+        .form-group input.error, .form-group select.error {
+            border-color: #dc2626 !important;
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1) !important;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: var(--shadow-lg);
+                border-top: 1px solid var(--neutral-200);
+            }
+            .nav-menu.active { display: flex; }
+            .mobile-menu-btn { display: block; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .hero-title { white-space: normal; border-right: none; }
+            .modal-content { margin: 10% 1rem; padding: 20px; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 0 1rem; }
+            .section { padding: 4rem 0; }
+            .hero-stat-number { font-size: 2.5rem; }
+            .stat-number { font-size: 2.5rem; }
+            .players-grid { grid-template-columns: 1fr; }
+            .social-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Efeitos Adicionais */
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+        .glow-effect { animation: glow 2s ease-in-out infinite; }
         .skip-link {
             position: absolute;
             top: -40px;
@@ -1298,26 +814,14 @@
             text-decoration: none;
             z-index: 10000;
         }
-
-        .skip-link:focus {
-            top: 6px;
-        }
-
-        /* Estilo adicional para erro no formulário */
-        .form-group input.error, .form-group select.error {
-            border-color: #dc2626 !important;
-            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1) !important;
-        }
+        .skip-link:focus { top: 6px; }
     </style>
 </head>
-<body>
-
     <header class="header">
         <div class="nav-container">
             <a href="#hero" class="logo">
                 <i class="fas fa-futbol logo-icon" aria-hidden="true"></i> CONFLITO FC
             </a>
-            
             <nav>
                 <ul class="nav-menu">
                     <li><a href="#hero" class="nav-link active"><i class="fas fa-home" aria-hidden="true"></i> Início</a></li>
@@ -1327,7 +831,6 @@
                     <li><a href="#recrutar-modal" id="open-recrutar-modal" class="btn btn-primary" onclick="openModal('recrutar-modal')" aria-label="Abrir formulário de recrutamento"><i class="fas fa-user-plus" aria-hidden="true"></i> Recrutar</a></li>
                 </ul>
             </nav>
-            
             <button class="mobile-menu-btn" aria-label="Abrir Menu Móvel" aria-expanded="false">
                 <i class="fas fa-bars" aria-hidden="true"></i>
             </button>
@@ -1348,7 +851,6 @@
                     <a href="#clube" class="btn btn-primary glow-effect">Conheça o Clube <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                     <a href="#elenco" class="btn btn-secondary"><i class="fas fa-bullseye" aria-hidden="true"></i> Nosso Elenco</a>
                 </div>
-                
                 <div class="hero-stats">
                     <div class="hero-stat animate-fadeInUp" style="animation-delay: 1.0s;" role="img" aria-label="Estatísticas do clube">
                         <span class="hero-stat-number" data-target="1">0</span>
@@ -1365,18 +867,17 @@
                 </div>
             </div>
         </section>
-        
+
         <section id="clube" class="clube-section section" tabindex="-1">
             <div class="container">
                 <h2 class="section-title animate-fadeIn">O Legado CONFLITO FC</h2>
                 <p class="section-subtitle animate-fadeIn" style="animation-delay: 0.2s;">
                     Nossa história, missão e os números que comprovam nossa dedicação e sucesso.
                 </p>
-
                 <div class="about-grid animate-fadeInUp" style="animation-delay: 0.4s;">
                     <div class="about-content">
                         <h3>Nossa História e Missão</h3>
-                        <p>Fundado em 2025, o CONFLITO FC nasceu com a visão de ser o clube mais organizado e vitorioso no cenário brasileiro de Pro Clubs. Cultivamos um ambiente de respeito, competitividade e amizade, sempre mirando o topo das ligas. Nossa missão é clara: **Dominar o Jogo**.</p>
+                        <p>Fundado em 2025, o CONFLITO FC nasceu com a visão de ser o clube mais organizado e vitorioso no cenário brasileiro de Pro Clubs. Cultivamos um ambiente de respeito, competitividade e amizade, sempre mirando o topo das ligas. Nossa missão é clara: <strong>Dominar o Jogo</strong>.</p>
                         <p>Nosso maior objetivo é a taça Guanabara e continuamos a recrutar talentos que compartilhem dessa ambição. Somos mais que um time, somos uma família.</p>
                         <a href="#" class="btn btn-primary">Ver Mais Detalhes <i class="fas fa-file-alt" aria-hidden="true"></i></a>
                     </div>
@@ -1384,7 +885,6 @@
                         <img src="https://images.unsplash.com/photo-1559774918-58694e8a553f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Foto da equipe do CONFLITO FC em ação no campo" loading="lazy">
                     </div>
                 </div>
-                
                 <div class="stats-grid animate-fadeInUp" style="animation-delay: 0.6s;">
                     <div class="stat-card">
                         <div class="stat-number" data-target="100">0</div>
@@ -1401,7 +901,7 @@
                 </div>
             </div>
         </section>
-        
+
         <section id="elenco" class="elenco-section section" tabindex="-1">
             <div class="container">
                 <h2 class="section-title animate-fadeIn">Nosso Elenco do Conflito</h2>
@@ -1409,164 +909,176 @@
                     Conheça os guerreiros que vestem a camisa e carregam o escudo do CONFLITO FC.
                 </p>
 
-                <div class="players-grid animate-fadeInUp" style="animation-delay: 0.4s;">
-                    <article class="player-card">
-                        <div class="player-header">
-                            <div class="player-avatar">
-                                <img src="https://images.unsplash.com/photo-1611003229184-018b9f6e182e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Foto de Markito10_, meio-campista do CONFLITO FC" loading="lazy">
+                <!-- Goleiros -->
+                <div class="position-group animate-fadeInUp" style="animation-delay: 0.4s;">
+                    <h3 class="position-title">Atacantes</h3>
+                    <div class="players-grid">
+                        <article class="player-card">
+                            <div class="player-header">
+                                <div class="player-avatar">
+                                    <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Foto de TheWallKeeper, goleiro do CONFLITO FC" loading="lazy">
+                                </div>
                             </div>
-                        </div>
-                        <div class="player-info">
-                            <h4 class="player-name">Markito10_</h4>
-                            <p class="player-position">Posição (MEI)</p>
-                            <a href="https://instagram.com/markito10_" target="_blank" rel="noopener noreferrer" class="social-link instagram-link" aria-label="Instagram de Markito10_">
-                                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-                            </a>
-                            <p class="player-description">Uma breve descrição sobre o jogador.</p>
-                            <div class="player-stats">
-                                <div class="player-stat"><div class="player-stat-value">9.5</div><div class="player-stat-label">Média</div></div>
-                                <div class="player-stat"><div class="player-stat-value">55</div><div class="player-stat-label">Gols</div></div>
-                                <div class="player-stat"><div class="player-stat-value">40</div><div class="player-stat-label">Assistências</div></div>
+                            <div class="player-info">
+                                <h4 class="player-name">Braga</h4>
+                                <p class="player-position">Atacante (ATA)</p>
+                                <a href="https://instagram.com/thewallkeeper" target="_blank" rel="noopener noreferrer" class="social-link instagram-link" aria-label="Instagram de TheWallKeeper">
+                                    <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                                </a>
+                                <p class="player-description">Fintou, passou, marcou — é nosso raio</p>
+                                <div class="player-stats">
+                                    <div class="player-stat"><div class="player-stat-value">09</div><div class="player-stat-label">Camisa</div></div>
+                                    <div class="player-stat"><div class="player-stat-value">60</div><div class="player-stat-label">Gols</div></div>
+                                    <div class="player-stat"><div class="player-stat-value"></div><div class="player-stat-label">Assistencias</div></div>
+                                </div>
                             </div>
-                        </div>
-                    </article>
-                    
-                    <article class="player-card">
-                        <div class="player-header">
-                            <div class="player-avatar">
-                                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Foto de Braga, atacante do CONFLITO FC" loading="lazy">
+                        </article>
+
+                        <article class="player-card">
+                            <div class="player-header">
+                                <div class="player-avatar">
+                                    <img src="https://images.unsplash.com/photo-1607783616288-517192e77445?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Foto de BellHome, atacante do CONFLITO FC" loading="lazy">
+                                </div>
                             </div>
-                        </div>
-                        <div class="player-info">
-                            <h4 class="player-name">Braga</h4>
-                            <p class="player-position">Posição (ATA)</p>
-                            <a href="https://instagram.com/braga_fc" target="_blank" rel="noopener noreferrer" class="social-link instagram-link" aria-label="Instagram de Braga">
-                                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-                            </a>
-                            <p class="player-description">Atacante veloz e letal na área.</p>
-                            <div class="player-stats">
-                                <div class="player-stat"><div class="player-stat-value">9.2</div><div class="player-stat-label">Média</div></div>
-                                <div class="player-stat"><div class="player-stat-value">45</div><div class="player-stat-label">Gols</div></div>
-                                <div class="player-stat"><div class="player-stat-value">09</div><div class="player-stat-label">Camisa</div></div>
+                            <div class="player-info">
+                                <h4 class="player-name">BellHome</h4>
+                                <p class="player-position">Atacante (ATA)</p>
+                                <a href="https://instagram.com/bellhome_fc" target="_blank" rel="noopener noreferrer" class="social-link instagram-link" aria-label="Instagram de BellHome">
+                                    <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                                </a>
+                                <p class="player-description">Rápido, leve e letal!</p>
+                                <div class="player-stats">
+                                    <div class="player-stat"><div class="player-stat-value">02</div><div class="player-stat-label">Camisa</div></div>
+                                    <div class="player-stat"><div class="player-stat-value">35</div><div class="player-stat-label">Gols</div></div>
+                                    <div class="player-stat"><div class="player-stat-value">15</div><div class="player-stat-label">Assistências</div></div>
+                                </div>
                             </div>
-                        </div>
-                    </article>
-                    
-                    <article class="player-card">
-                        <div class="player-header">
-                            <div class="player-avatar">
-                                <img src="https://images.unsplash.com/photo-1607783616288-517192e77445?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Foto de Muro_Defesa, zagueiro do CONFLITO FC" loading="lazy">
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Zagueiros -->
+                <div class="position-group animate-fadeInUp" style="animation-delay: 0.6s;">
+                    <h3 class="position-title">Zagueiros</h3>
+                    <div class="players-grid">
+                        <article class="player-card">
+                            <div class="player-header">
+                                <div class="player-avatar">
+                                    <img src="https://images.unsplash.com/photo-1607783616288-517192e77445?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Foto de Muro_Defesa, zagueiro do CONFLITO FC" loading="lazy">
+                                </div>
                             </div>
-                        </div>
-                        <div class="player-info">
-                            <h4 class="player-name">Muro_Defesa</h4>
-                            <p class="player-position">Zagueiro (CB)</p>
-                            <a href="https://instagram.com/murodefesa" target="_blank" rel="noopener noreferrer" class="social-link instagram-link" aria-label="Instagram de Muro_Defesa">
-                                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-                            </a>
-                            <p class="player-description">A muralha. Forte no desarme, excelente no jogo aéreo e voz de comando na defesa.</p>
-                            <div class="player-stats">
-                                <div class="player-stat"><div class="player-stat-value">8.8</div><div class="player-stat-label">Média</div></div>
-                                <div class="player-stat"><div class="player-stat-value">50</div><div class="player-stat-label">Desarmes</div></div>
-                                <div class="player-stat"><div class="player-stat-value">98</div><div class="player-stat-label">Passes</div></div>
+                            <div class="player-info">
+                                <h4 class="player-name">Muro_Defesa</h4>
+                                <p class="player-position">Zagueiro (CB)</p>
+                                <a href="https://instagram.com/murodefesa" target="_blank" rel="noopener noreferrer" class="social-link instagram-link" aria-label="Instagram de Muro_Defesa">
+                                    <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                                </a>
+                                <p class="player-description">A muralha. Forte no desarme, excelente no jogo aéreo e voz de comando na defesa.</p>
+                                <div class="player-stats">
+                                    <div class="player-stat"><div class="player-stat-value">8.8</div><div class="player-stat-label">Média</div></div>
+                                    <div class="player-stat"><div class="player-stat-value">50</div><div class="player-stat-label">Desarmes</div></div>
+                                    <div class="player-stat"><div class="player-stat-value">98</div><div class="player-stat-label">Passes</div></div>
+                                </div>
                             </div>
-                        </div>
-                    </article>
-                    
-                    <article class="player-card">
-                        <div class="player-header">
-                            <div class="player-avatar">
-                                <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Foto de TheWallKeeper, goleiro do CONFLITO FC" loading="lazy">
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Meio-Campistas -->
+                <div class="position-group animate-fadeInUp" style="animation-delay: 0.8s;">
+                    <h3 class="position-title">Meio-Campistas</h3>
+                    <div class="players-grid">
+                        <article class="player-card">
+                            <div class="player-header">
+                                <div class="player-avatar">
+                                    <img src="https://images.unsplash.com/photo-1611003229184-018b9f6e182e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Foto de Markito10_, meio-campista do CONFLITO FC" loading="lazy">
+                                </div>
                             </div>
-                        </div>
-                        <div class="player-info">
-                            <h4 class="player-name">TheWallKeeper</h4>
-                            <p class="player-position">Goleiro (GK)</p>
-                            <a href="https://instagram.com/thewallkeeper" target="_blank" rel="noopener noreferrer" class="social-link instagram-link" aria-label="Instagram de TheWallKeeper">
-                                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-                            </a>
-                            <p class="player-description">O último guardião. Reflexos rápidos e a base para a nossa construção de jogo.</p>
-                            <div class="player-stats">
-                                <div class="player-stat"><div class="player-stat-value">9.3</div><div class="player-stat-label">Média</div></div>
-                                <div class="player-stat"><div class="player-stat-value">60</div><div class="player-stat-label">Clean Sheets</div></div>
-                                <div class="player-stat"><div class="player-stat-value">90%</div><div class="player-stat-label">Defesas</div></div>
+                            <div class="player-info">
+                                <h4 class="player-name">Markito10</h4>
+                                <p class="player-position">Meio-Campista (MEI)</p>
+                                <a href="https://instagram.com/markito10_" target="_blank" rel="noopener noreferrer" class="social-link instagram-link" aria-label="Instagram de Markito10_">
+                                    <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                                </a>
+                                <p class="player-description">Maestro Pifador</p>
+                                <div class="player-stats">
+                                    <div class="player-stat"><div class="player-stat-value">10</div><div class="player-stat-label">Camisa</div></div>
+                                    <div class="player-stat"><div class="player-stat-value">55</div><div class="player-stat-label">Gols</div></div>
+                                    <div class="player-stat"><div class="player-stat-value">40</div><div class="player-stat-label">Assistências</div></div>
+                                </div>
                             </div>
-                        </div>
-                    </article>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Atacantes -->
+                <div class="position-group animate-fadeInUp" style="animation-delay: 1.0s;">
+                    <h3 class="position-title">Atacantes</h3>
+                    <div class="players-grid">
+                        <article class="player-card">
+                            <div class="player-header">
+                                <div class="player-avatar">
+                                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Foto de Braga, atacante do CONFLITO FC" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="player-info">
+                                <h4 class="player-name">Braga</h4>
+                                <p class="player-position">Atacante (ATA)</p>
+                                <a href="https://instagram.com/braga_fc" target="_blank" rel="noopener noreferrer" class="social-link instagram-link" aria-label="Instagram de Braga">
+                                    <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                                </a>
+                                <p class="player-description">Fintou, passou, marcou — é nosso raio</p>
+                                <div class="player-stats">
+                                    <div class="player-stat"><div class="player-stat-value">09</div><div class="player-stat-label">Camisa</div></div>
+                                    <div class="player-stat"><div class="player-stat-value">45</div><div class="player-stat-label">Gols</div></div>
+                                    <div class="player-stat"><div class="player-stat-value">09</div><div class="player-stat-label">Assistências</div></div>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="player-card">
+                            <div class="player-header">
+                                <div class="player-avatar">
+                                    <img src="https://images.unsplash.com/photo-1607783616288-517192e77445?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Foto de BellHome, atacante do CONFLITO FC" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="player-info">
+                                <h4 class="player-name">BellHome</h4>
+                                <p class="player-position">Atacante (ATA)</p>
+                                <a href="https://instagram.com/bellhome_fc" target="_blank" rel="noopener noreferrer" class="social-link instagram-link" aria-label="Instagram de BellHome">
+                                    <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                                </a>
+                                <p class="player-description">Rápido, leve e letal!</p>
+                                <div class="player-stats">
+                                    <div class="player-stat"><div class="player-stat-value">02</div><div class="player-stat-label">Camisa</div></div>
+                                    <div class="player-stat"><div class="player-stat-value">35</div><div class="player-stat-label">Gols</div></div>
+                                    <div class="player-stat"><div class="player-stat-value">15</div><div class="player-stat-label">Assistências</div></div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
                 </div>
             </div>
         </section>
-        
-        <!-- Seção de Escalções adicionada como melhoria opcional -->
-        <section id="escalacoes" class="escalacoes-section section">
-            <div class="container">
-                <h2 class="section-title animate-fadeIn">Escalações Táticas</h2>
-                <p class="section-subtitle animate-fadeIn" style="animation-delay: 0.2s;">
-                    Veja nossas formações e estratégias para dominar o campo.
-                </p>
-                <div class="formations-grid animate-fadeInUp" style="animation-delay: 0.4s;">
-                    <div class="formation-card">
-                        <h3 class="formation-title">4-3-3 Ofensivo</h3>
-                        <div class="formation-pitch">
-                            <!-- Exemplo de marcadores de jogadores - posições aproximadas -->
-                            <div class="player-marker" style="top: 10%; left: 50%;" data-player="GK">GK</div>
-                            <div class="player-marker" style="top: 25%; left: 20%;" data-player="LB">LB</div>
-                            <div class="player-marker" style="top: 25%; left: 50%;" data-player="CB">CB</div>
-                            <div class="player-marker" style="top: 25%; left: 80%;" data-player="RB">RB</div>
-                            <div class="player-marker" style="top: 45%; left: 15%;" data-player="LM">LM</div>
-                            <div class="player-marker" style="top: 45%; left: 50%;" data-player="CM">CM</div>
-                            <div class="player-marker" style="top: 45%; left: 85%;" data-player="RM">RM</div>
-                            <div class="player-marker" style="top: 65%; left: 20%;" data-player="LW">LW</div>
-                            <div class="player-marker" style="top: 65%; left: 50%;" data-player="ST">ST</div>
-                            <div class="player-marker" style="top: 65%; left: 80%;" data-player="RW">RW</div>
-                        </div>
-                        <p class="formation-description">Formação agressiva para pressionar alto e explorar as laterais.</p>
-                    </div>
-                    <div class="formation-card">
-                        <h3 class="formation-title">3-5-2 Defensivo</h3>
-                        <div class="formation-pitch">
-                            <!-- Posições aproximadas para 3-5-2 -->
-                            <div class="player-marker" style="top: 10%; left: 50%;" data-player="GK">GK</div>
-                            <div class="player-marker" style="top: 25%; left: 25%;" data-player="CB">CB</div>
-                            <div class="player-marker" style="top: 25%; left: 50%;" data-player="CB">CB</div>
-                            <div class="player-marker" style="top: 25%; left: 75%;" data-player="CB">CB</div>
-                            <div class="player-marker" style="top: 45%; left: 10%;" data-player="LWB">LWB</div>
-                            <div class="player-marker" style="top: 45%; left: 30%;" data-player="CM">CM</div>
-                            <div class="player-marker" style="top: 45%; left: 50%;" data-player="CM">CM</div>
-                            <div class="player-marker" style="top: 45%; left: 70%;" data-player="CM">CM</div>
-                            <div class="player-marker" style="top: 45%; left: 90%;" data-player="RWB">RWB</div>
-                            <div class="player-marker" style="top: 65%; left: 35%;" data-player="ST">ST</div>
-                            <div class="player-marker" style="top: 65%; left: 65%;" data-player="ST">ST</div>
-                        </div>
-                        <p class="formation-description">Equilíbrio entre defesa sólida e contra-ataques rápidos.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
+
         <section id="redes" class="redes-section section" tabindex="-1">
             <div class="container">
                 <h2 class="section-title animate-fadeIn">Conecte-se Conosco</h2>
                 <p class="section-subtitle animate-fadeIn" style="animation-delay: 0.2s;">
                     Acompanhe nossos jogos, lives e novidades nas principais plataformas.
                 </p>
-
                 <div class="social-grid animate-fadeInUp" style="animation-delay: 0.4s;">
-                    
                     <article class="social-card discord">
                         <i class="fab fa-discord social-icon" style="color: #5865f2;" aria-hidden="true"></i>
                         <h4 class="social-title">Discord Oficial</h4>
                         <p class="social-description">Entre no nosso servidor para interagir com a equipe, participar de recrutamentos e receber notícias em primeira mão.</p>
                         <a href="https://discord.gg/conflito-fc" class="btn btn-outline" style="color: #5865f2; border-color: #5865f2;" target="_blank" rel="noopener noreferrer" aria-label="Entrar no Discord oficial">Entrar no Discord</a>
                     </article>
-                    
                     <article class="social-card twitch">
                         <i class="fab fa-twitch social-icon" style="color: #9146ff;" aria-hidden="true"></i>
                         <h4 class="social-title">Lives na Twitch</h4>
                         <p class="social-description">Assista aos nossos jogos ao vivo com narração e comentários. A emoção da competição em tempo real.</p>
                         <a href="https://twitch.tv/conflito-fc" class="btn btn-outline" style="color: #9146ff; border-color: #9146ff;" target="_blank" rel="noopener noreferrer" aria-label="Assistir lives na Twitch">Assistir Agora</a>
                     </article>
-                    
                     <article class="social-card instagram">
                         <i class="fab fa-instagram social-icon" style="color: #e4405f;" aria-hidden="true"></i>
                         <h4 class="social-title">Conflito no Instagram</h4>
@@ -1577,7 +1089,7 @@
             </div>
         </section>
     </main>
-    
+
     <footer class="footer">
         <div class="footer-content">
             <p>&copy; 2025 CONFLITO FC - Pro Clubs.</p>
@@ -1590,19 +1102,15 @@
             <span class="close-btn" onclick="closeModal('recrutar-modal')" aria-label="Fechar modal">&times;</span>
             <h3 class="modal-title" id="modal-title"><i class="fas fa-user-plus" aria-hidden="true"></i> Recrutamento CONFLITO FC</h3>
             <p class="modal-subtitle">Preencha os dados e entraremos em contato via WhatsApp!</p>
-
             <form id="recrutamento-form" novalidate>
-                
                 <div class="form-group">
                     <label for="nome">Nome Completo</label>
                     <input type="text" id="nome" name="nome" placeholder="Seu nome" required aria-required="true">
                 </div>
-                
                 <div class="form-group">
                     <label for="id_jogo">ID/Nick no Jogo</label>
                     <input type="text" id="id_jogo" name="id_jogo" placeholder="Ex: Player_Elite_77" required aria-required="true">
                 </div>
-
                 <div class="form-group">
                     <label for="idade">Idade</label>
                     <select id="idade" name="idade" required aria-required="true">
@@ -1613,7 +1121,6 @@
                         <option value="+50">+ de 50 anos</option>
                     </select>
                 </div>
-                
                 <div class="form-group">
                     <label for="discord">Possui Discord?</label>
                     <select id="discord" name="discord" required aria-required="true">
@@ -1622,7 +1129,6 @@
                         <option value="Nao">Não</option>
                     </select>
                 </div>
-
                 <div class="form-group">
                     <label for="plataforma">Plataforma</label>
                     <select id="plataforma" name="plataforma" required aria-required="true">
@@ -1632,7 +1138,6 @@
                         <option value="PC">PC</option>
                     </select>
                 </div>
-                
                 <div class="form-group">
                     <label for="posicao">Posição Preferida</label>
                     <select id="posicao" name="posicao" required aria-required="true">
@@ -1646,7 +1151,6 @@
                         <option value="Atacante">Atacante</option>
                     </select>
                 </div>
-                
                 <div class="form-group">
                     <label for="dias">Dias Disponíveis</label>
                     <select id="dias" name="dias" required aria-required="true">
@@ -1657,7 +1161,6 @@
                         <option value="Quinta">Quinta-Feira</option>
                     </select>
                 </div>
-
                 <div class="form-group">
                     <label for="horario">Horário de Disponibilidade (Início)</label>
                     <select id="horario" name="horario" required aria-required="true">
@@ -1667,7 +1170,6 @@
                         <option value="21:00">21:00</option>
                     </select>
                 </div>
-
                 <button type="submit" class="btn btn-primary btn-submit">
                     Enviar via WhatsApp <i class="fab fa-whatsapp" aria-hidden="true"></i>
                 </button>
@@ -1675,13 +1177,13 @@
             <p class="whatsapp-disclaimer">Ao clicar, você será redirecionado para o WhatsApp para enviar as informações.</p>
         </div>
     </div>
-    
+
     <script>
-        // Função para Inicializar o Vanta.js (agora aplicado ao body inteiro)
+        // Inicializar Vanta.js
         function initVanta() {
-            if (VANTA && VANTA.BIRDS) {
+            if (window.VANTA && window.VANTA.BIRDS) {
                 VANTA.BIRDS({
-                    el: "body", // Alterado para body para cobrir toda a página
+                    el: "body",
                     mouseControls: true,
                     touchControls: true,
                     gyroControls: false,
@@ -1696,28 +1198,33 @@
                     separation: 50.0,
                     alignment: 50.0
                 });
+            } else {
+                console.error("Vanta.js não carregado corretamente.");
             }
         }
-        
-        // Inicializar Typed.js (efeito de digitação no título)
+
+        // Inicializar Typed.js
         function initTyped() {
-            new Typed('#typed-text', {
-                strings: ["CONFLITO FC", "PRO CLUBS"],
-                typeSpeed: 70,
-                backSpeed: 50,
-                loop: true,
-                cursorChar: '_',
-            });
+            if (window.Typed) {
+                new Typed('#typed-text', {
+                    strings: ["CONFLITO FC", "PRO CLUBS"],
+                    typeSpeed: 70,
+                    backSpeed: 50,
+                    loop: true,
+                    cursorChar: '_',
+                });
+            } else {
+                console.error("Typed.js não carregado corretamente.");
+            }
         }
-        
-        // Função para Animação de Contadores (Hero Stats e Clube Stats)
+
+        // Animação de Contadores
         function animateCounter(element, target) {
             let start = 0;
             const duration = 2000;
             const stepTime = 10;
             const steps = duration / stepTime;
             const increment = target / steps;
-            
             let current = start;
             const timer = setInterval(() => {
                 current += increment;
@@ -1730,20 +1237,17 @@
             }, stepTime);
         }
 
-        // Observador de Interseção para Animar Seções e Contadores
+        // Observador de Interseção
         const options = {
             root: null,
             rootMargin: '0px',
             threshold: 0.2
         };
-
         const sectionObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
-                const section = entry.target;
                 if (entry.isIntersecting) {
-                    section.classList.add('active');
-                    
-                    const counters = section.querySelectorAll('.hero-stat-number, .stat-number');
+                    entry.target.classList.add('active');
+                    const counters = entry.target.querySelectorAll('.hero-stat-number, .stat-number');
                     counters.forEach(counter => {
                         const target = parseFloat(counter.getAttribute('data-target'));
                         if (!counter.hasAttribute('data-animated')) {
@@ -1751,29 +1255,23 @@
                             counter.setAttribute('data-animated', 'true');
                         }
                     });
-                } 
+                }
             });
         }, options);
-        
-        // ====================================
-        // LÓGICA DO MODAL (Recrutamento)
-        // ====================================
 
+        // Modal
         function openModal(id) {
             const modal = document.getElementById(id);
             modal.style.display = 'block';
             modal.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden';
         }
-
         function closeModal(id) {
             const modal = document.getElementById(id);
             modal.style.display = 'none';
             modal.setAttribute('aria-hidden', 'true');
             document.body.style.overflow = 'auto';
         }
-
-        // Fechar modal ao clicar fora dele
         window.onclick = function(event) {
             const modal = document.getElementById('recrutar-modal');
             if (event.target == modal) {
@@ -1781,29 +1279,24 @@
             }
         }
 
-        // Validação melhorada do formulário
+        // Formulário de Recrutamento
         document.getElementById('recrutamento-form').addEventListener('submit', function(event) {
             event.preventDefault();
-
-            // Verificação de campos obrigatórios
             const form = event.target;
             const requiredFields = form.querySelectorAll('[required]');
             let isValid = true;
             requiredFields.forEach(field => {
                 if (!field.value.trim()) {
-                    field.classList.add('error'); // Adicionar classe para estilo de erro
+                    field.classList.add('error');
                     isValid = false;
                 } else {
                     field.classList.remove('error');
                 }
             });
-
             if (!isValid) {
                 alert('Por favor, preencha todos os campos obrigatórios.');
                 return;
             }
-
-            // Coleta dos dados
             const nome = document.getElementById('nome').value;
             const id_jogo = document.getElementById('id_jogo').value;
             const idade = document.getElementById('idade').value;
@@ -1812,9 +1305,7 @@
             const plataforma = document.getElementById('plataforma').value;
             const dias = document.getElementById('dias').value;
             const horario = document.getElementById('horario').value;
-
             const numeroWhatsapp = '5551992520046';
-
             const mensagem = `
 *🚀 Novo Candidato ao CONFLITO FC!*
 
@@ -1832,31 +1323,24 @@ Horário (Início): ${horario}
 
 *Por favor, responda a esta mensagem no WhatsApp.*
 `;
-            
             const mensagemCodificada = encodeURIComponent(mensagem);
             const linkWhatsapp = `https://api.whatsapp.com/send?phone=${numeroWhatsapp}&text=${mensagemCodificada}`;
-
             window.open(linkWhatsapp, '_blank');
-            
             closeModal('recrutar-modal');
             form.reset();
         });
-        
-        // Função principal de Inicialização
-        document.addEventListener('DOMContentLoaded', () => {
-            initVanta(); // Inicializa Vanta no body
-            initTyped();
 
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', () => {
+            initVanta();
+            initTyped();
             document.querySelectorAll('.section').forEach(section => {
                 sectionObserver.observe(section);
             });
-            
-            // Lógica de Scroll e Nav-Menu
             const header = document.querySelector('.header');
             const navLinks = document.querySelectorAll('.nav-link');
             const menuBtn = document.querySelector('.mobile-menu-btn');
             const navMenu = document.querySelector('.nav-menu');
-
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 50) {
                     header.classList.add('scrolled');
@@ -1864,8 +1348,6 @@ Horário (Início): ${horario}
                     header.classList.remove('scrolled');
                 }
             });
-
-            // Toggle Menu Mobile com acessibilidade
             menuBtn.addEventListener('click', () => {
                 const isActive = navMenu.classList.toggle('active');
                 menuBtn.setAttribute('aria-expanded', isActive);
@@ -1873,9 +1355,8 @@ Horário (Início): ${horario}
                 icon.classList.toggle('fa-bars');
                 icon.classList.toggle('fa-xmark');
             });
-            
             navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
+                link.addEventListener('click', function() {
                     if (navMenu.classList.contains('active')) {
                         navMenu.classList.remove('active');
                         menuBtn.setAttribute('aria-expanded', 'false');
@@ -1885,8 +1366,6 @@ Horário (Início): ${horario}
                     }
                 });
             });
-
-            // Nav active observer
             const navObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -1900,40 +1379,8 @@ Horário (Início): ${horario}
                     }
                 });
             }, { rootMargin: '-10% 0px -85% 0px' });
-
             document.querySelectorAll('.section').forEach(section => {
                 navObserver.observe(section);
-            });
-            
-            // Lógica do Cursor Customizado
-            const cursor = document.querySelector('.cursor');
-            const cursorFollower = document.querySelector('.cursor-follower');
-
-            if (cursor && cursorFollower) {
-                document.addEventListener('mousemove', e => {
-                    cursor.style.left = `${e.clientX}px`;
-                    cursor.style.top = `${e.clientY}px`;
-                    cursorFollower.style.left = `${e.clientX}px`;
-                    cursorFollower.style.top = `${e.clientY}px`;
-                });
-                
-                const interactiveElements = document.querySelectorAll('a, button, .player-marker, .hero-stat, .stat-card, .social-card, .player-card, .btn');
-                interactiveElements.forEach(el => {
-                    el.addEventListener('mouseenter', () => {
-                        cursor.classList.add('hover');
-                        cursorFollower.classList.add('hover');
-                    });
-                    el.addEventListener('mouseleave', () => {
-                        cursor.classList.remove('hover');
-                        cursorFollower.classList.remove('hover');
-                    });
-                });
-            }
-
-            // Foco no skip link
-            const skipLink = document.querySelector('.skip-link');
-            skipLink.addEventListener('focus', () => {
-                skipLink.blur();
             });
         });
     </script>
